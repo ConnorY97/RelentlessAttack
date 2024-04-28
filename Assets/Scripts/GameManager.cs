@@ -6,13 +6,16 @@ public class GameManager : MonoBehaviour
 {
     [Header("Grid vars")]
     public bool mDrawGizmos = false;
+    public CellsDebugger mCellsReference;
     [Header("Prefab vars")]
     public Soldier mSoldierPrefab = null;
     public GameObject mPlayerSpawn = null;
     // Enemy tracker
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
-    [Header("Debugging")]
-    public CellsDebugger mCellsReference;
+    private Soldier mPlayer = null;
+    [Header("Enemy Vars")]
+    public float mSpeed = 5;
+
 
     // Singleton Functions
     public static GameManager Instance { get; private set; }
@@ -21,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
 
@@ -35,30 +38,41 @@ public class GameManager : MonoBehaviour
         {
             mCellsReference.init();
         }
+
+        // Create the player
+        mPlayer = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
+        mPlayer.Init(10, null, false, mSpeed);
+
+        // Total amount of soldier we can spawn
+        int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
+        int currentRow = 0;
+        int currentCol = 0;
         // Create soldiers
-        for (int i = 0; i < mCellsReference.mCol; i++)
+        for (int i = 0; i < totalEnemySpawn; i++)
         {
             // Do spawn stuff here
             Soldier instance = Instantiate(mSoldierPrefab, transform.position, Quaternion.identity);
-            instance.Init(1, null);
+            instance.Init(1, mPlayer.gameObject, true, mSpeed / 2);
 
             instance.name = $"Soldier {i}";
 
-            instance.transform.position = mCellsReference.mCells[i][0];
+            if (i != 0 && i % mCellsReference.mCol == 0)
+            {
+                currentRow++;
+                currentCol = 0;
+            }
+
+            instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
+
+            currentCol++;
 
             mEnemyBaseList.Add(instance);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnDrawGizmos()
     {
-        if (mCellsReference.mCells != null)
+        if (mDrawGizmos && mCellsReference.mCells != null)
         {
             Gizmos.color = Color.red;
 
@@ -70,11 +84,23 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            mCellsReference.init();
-        }
     }
 
-    public GameObject GetPlayer() { return mPlayerSpawn; }
+    public GameObject GetPlayer() { return mPlayer.gameObject; }
+
+    public Vector3 GetClosestEnemy(Vector3 currentPosition)
+    {
+        float smallestDistance = float.MaxValue;
+        Vector3 closestEnemy = Vector3.zero;
+        for (int i = 0; i < mEnemyBaseList.Count; i++)
+        {
+            float currentDistance = Vector3.Distance(currentPosition, mEnemyBaseList[i].transform.position);
+            if (currentDistance < smallestDistance)
+            {
+                smallestDistance = currentDistance;
+                closestEnemy = mEnemyBaseList[i].transform.position;
+            }
+        }
+        return closestEnemy;
+    }
 }

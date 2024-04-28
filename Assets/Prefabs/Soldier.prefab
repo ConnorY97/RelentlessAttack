@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7536820699053882345}
   - component: {fileID: 64491670994251387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 537437400695104930}
   - component: {fileID: 1707276858188863994}
   - component: {fileID: 7218410777808160393}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hitpoints UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2325726071522770787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1144976469165685886}
   - component: {fileID: 8622644939548271388}
   - component: {fileID: 6330511114573813272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 3926317381372432877}
   - component: {fileID: 7293911085512920410}
   - component: {fileID: 3820788141295334268}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7070594382098824467}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SeathedPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,8 @@ GameObject:
   - component: {fileID: 9134695049925737832}
   - component: {fileID: 1824024166159688394}
   - component: {fileID: 8290871298119477032}
-  m_Layer: 0
+  - component: {fileID: 968861219278527115}
+  m_Layer: 3
   m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,8 +584,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1019572337259250942}
   - {fileID: 7070594382098824467}
@@ -706,3 +707,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &968861219278527115
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528858492212944197}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

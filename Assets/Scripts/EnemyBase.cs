@@ -1,17 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TreeEditor;
-using Unity.Notifications.iOS;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    protected bool mEnemy = true;
+    public bool Enemy
+    {
+        get { return mEnemy; }
+        set { mEnemy = value; }
+    }
     protected int mHitPoints = 0;
     public int HitPoints
     {
         get { return mHitPoints; }
         set { mHitPoints = value; }
+    }
+
+    protected float mSpeed = 10;
+    public float Speed
+    {
+        get { return mSpeed; }
+        set { mSpeed = value; }
     }
 
     [Header("UI")]
@@ -34,24 +44,45 @@ public class EnemyBase : MonoBehaviour
     {
         Tick();
 
-        if (GameManager.Instance.GetPlayer() != null)
+        if (mEnemy)
         {
-            Vector3 look = transform.InverseTransformPoint(GameManager.Instance.GetPlayer().transform.position);
+            if (GameManager.Instance.GetPlayer() != null)
+            {
+                LookAt2D(GameManager.Instance.GetPlayer().transform.position);
 
-            float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
-
-            transform.Rotate(0,0,angle);
+                // Move towards the player
+                transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.GetPlayer().transform.position, mSpeed * Time.deltaTime);
+            }
+            else
+            {
+                LookAt2D(GameManager.Instance.GetClosestEnemy(transform.position));
+            }
         }
+
+
     }
 
-    public virtual void Init(int hitPoints, GameObject target)
+    public virtual void Init(int hitPoints, GameObject target, bool isEnemy, float speed)
     {
+        mEnemy = isEnemy;
+
         mHitPoints = hitPoints;
 
         // Set hit points ui
         mUIHitPoints.text = mHitPoints.ToString();
 
         mTarget = target;
+
+        mSpeed = speed;
+    }
+
+    private void LookAt2D(Vector3 target)
+    {
+        Vector3 look = transform.InverseTransformPoint(target);
+
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
+
+        transform.Rotate(0, 0, angle);
     }
 
     public virtual void Tick() { }
@@ -73,11 +104,4 @@ public class EnemyBase : MonoBehaviour
         // Make sure it cleans any references to itself
         Destroy(this.gameObject);
     }
-
-    public void Attack()
-    {
-
-    }
-
-
 }
