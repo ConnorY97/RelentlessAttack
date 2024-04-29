@@ -275,7 +275,7 @@ MonoBehaviour:
   mCellsReference: {fileID: 11400000, guid: dc2baea35d9a1494fb992b065d54224f, type: 2}
   mSoldierPrefab: {fileID: 1824024166159688394, guid: 3741f91d05f5a57479eec2cdaa142a97, type: 3}
   mPlayerSpawn: {fileID: 568883341}
-  mSpeed: 1
+  mSpeed: 0.75
 --- !u!4 &1504336621
 Transform:
   m_ObjectHideFlags: 0

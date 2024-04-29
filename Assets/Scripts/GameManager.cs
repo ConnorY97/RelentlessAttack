@@ -92,15 +92,18 @@ public class GameManager : MonoBehaviour
     {
         float smallestDistance = float.MaxValue;
         Vector3 closestEnemy = Vector3.zero;
-        for (int i = 0; i < mEnemyBaseList.Count; i++)
+
+        foreach (var enemyBase in mEnemyBaseList)
         {
-            float currentDistance = Vector3.Distance(currentPosition, mEnemyBaseList[i].transform.position);
+            float currentDistance = Vector3.Distance(currentPosition, enemyBase.transform.position);
             if (currentDistance < smallestDistance)
             {
                 smallestDistance = currentDistance;
-                closestEnemy = mEnemyBaseList[i].transform.position;
+                closestEnemy = enemyBase.transform.position;
             }
         }
+
         return closestEnemy;
     }
+
 }
