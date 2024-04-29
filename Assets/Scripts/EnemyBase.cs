@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class EnemyBase : MonoBehaviour
         get { return mEnemy; }
         set { mEnemy = value; }
     }
+
+    [Header("Health")]
     protected int mHitPoints = 0;
     public int HitPoints
     {
@@ -17,6 +20,7 @@ public class EnemyBase : MonoBehaviour
         set { mHitPoints = value; }
     }
 
+    [Header("Movement")]
     protected float mSpeed = 10;
     public float Speed
     {
@@ -39,6 +43,7 @@ public class EnemyBase : MonoBehaviour
         set { mTarget = value; }
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +55,23 @@ public class EnemyBase : MonoBehaviour
             {
                 LookAt2D(GameManager.Instance.GetPlayer().transform.position);
 
+                // Check if we are colliding with other enemy soldier
+                //  If so slow movement
+                var colliders = Physics.OverlapSphere(transform.position, 0.35f);
+
+                if (colliders.Length > 0)
+                {
+                    foreach (var collider in colliders)
+                    {
+                        if (collider.tag == "Enemy")
+                        {
+                            // Reduce movement speed
+                            mSpeed *= 0.1f;
+                        }
+                    }
+                }
+
+
                 // Move towards the player
                 transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.GetPlayer().transform.position, mSpeed * Time.deltaTime);
             }
@@ -58,8 +80,6 @@ public class EnemyBase : MonoBehaviour
                 LookAt2D(GameManager.Instance.GetClosestEnemy(transform.position));
             }
         }
-
-
     }
 
     public virtual void Init(int hitPoints, GameObject target, bool isEnemy, float speed)

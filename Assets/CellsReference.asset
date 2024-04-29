@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377fc69ef27039745858d8f80abc5bdd, type: 3}
   m_Name: CellsReference
   m_EditorClassIdentifier: 
-  mPos: {x: -5, y: 4}
-  mRow: 5
-  mCol: 9
-  mCellSize: 1
-  mXSpacing: 0.25
-  mYSpacking: 0.25
+  mPos: {x: -2.1, y: 4.7}
+  mRow: 9
+  mCol: 8
+  mCellSize: 0.5
+  mXSpacing: 0.1
+  mYSpacking: 0.1
