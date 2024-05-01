@@ -124,4 +124,23 @@ public class EnemyBase : MonoBehaviour
         // Make sure it cleans any references to itself
         Destroy(this.gameObject);
     }
+
+    protected Vector3 FindClosestTarget()
+    {
+        Vector3 closest = Vector3.zero;
+        float smallestDistance = float.MaxValue;
+        if (mEnemy)
+        {
+            List<GameObject> players = new List<GameObject>();
+            GameObject.FindGameObjectsWithTag("Player", players);
+            if (players.Count > 0)
+            {
+                foreach (GameObject p in players)
+                {
+                    float currentDistance = Vector3.Distance(transform.position, p.transform.position);
+                }
+            }
+        }
+        return Vector3.zero;
+    }
 }

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         // Create the player
         mPlayer = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
         mPlayer.Init(10, null, false, mSpeed);
+        mPlayer.tag = "Player";
 
         // Total amount of soldier we can spawn
         int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
             instance.Init(1, mPlayer.gameObject, true, mSpeed / 2);
 
             instance.name = $"Soldier {i}";
+            instance.tag = "Enemy";
 
             if (i != 0 && i % mCellsReference.mCol == 0)
             {
