@@ -16,6 +16,19 @@ public class GameManager : MonoBehaviour
     [Header("Enemy Vars")]
     public float mSpeed = 5;
 
+    [Header("Boids Behavior")]
+    public float mSeekWeight = 100.0f;
+    public float mCohesionWeight = 100.0f;
+    public float mAlignmentWeight = 100.0f;
+    public float mSeparationWeight = 100.0f;
+    public float mCohesionDistance = 100.0f;
+    public float mNeighbourhoodDistance = 10.0f;
+    public float mAlignmentBuffer = 0.75f;
+
+    private Seek mSeekBehaviour = null;
+    private Cohesion mCohesionBehavior = null;
+    private Alignment mAlignmentBehavior = null;
+    private Separation mSeparationBehavior = null;
 
     // Singleton Functions
     public static GameManager Instance { get; private set; }
@@ -44,6 +57,13 @@ public class GameManager : MonoBehaviour
         mPlayer.Init(10, null, false, mSpeed);
         mPlayer.tag = "Player";
 
+        // Boid behavior initialization
+        mSeekBehaviour = new Seek(mSeekWeight);
+        mSeekBehaviour.SetTarget(mPlayer.GetComponent<EnemyBase>());
+        mCohesionBehavior = new Cohesion(mCohesionWeight, mCohesionDistance);
+        mAlignmentBehavior = new Alignment(mAlignmentWeight, mNeighbourhoodDistance, mAlignmentBuffer);
+        mSeparationBehavior = new Separation(mSeparationWeight, mNeighbourhoodDistance);
+
         // Total amount of soldier we can spawn
         int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
         int currentRow = 0;
@@ -70,6 +90,25 @@ public class GameManager : MonoBehaviour
 
             mEnemyBaseList.Add(instance);
         }
+
+        mAlignmentBehavior.SetNeighbourHood(mEnemyBaseList);
+        mCohesionBehavior.SetNeighbourhood(mEnemyBaseList);
+        mSeparationBehavior.SetNeighbourhood(mEnemyBaseList);
+        foreach (EnemyBase enemy in mEnemyBaseList)
+        {
+            enemy.AddBehavior(mSeekBehaviour);
+            enemy.AddBehavior(mCohesionBehavior);
+            enemy.AddBehavior(mAlignmentBehavior);
+            enemy.AddBehavior(mSeparationBehavior);
+        }
+    }
+
+    private void Update()
+    {
+        mSeekBehaviour.UpdateWeight(mSeekWeight);
+        mCohesionBehavior.UpdateWeight(mCohesionWeight);
+        mAlignmentBehavior.UpdateWeight(mAlignmentWeight);
+        mSeparationBehavior.UpdateWeight(mSeparationWeight);
     }
 
     private void OnDrawGizmos()

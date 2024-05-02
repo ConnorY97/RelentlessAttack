@@ -27,6 +27,7 @@ public class EnemyBase : MonoBehaviour
         get { return mSpeed; }
         set { mSpeed = value; }
     }
+    public ContactFilter2D mContactFilter;
 
     [Header("UI")]
     [SerializeField]
@@ -43,37 +44,67 @@ public class EnemyBase : MonoBehaviour
         set { mTarget = value; }
     }
 
+    protected Rigidbody2D mRigidBody = null;
+
+    private List<Behaviour> mBehaviours = new List<Behaviour>();
+
+    public void AddBehavior(Behaviour behaviour)
+    {
+        if (behaviour !=  null)
+        {
+            mBehaviours.Add(behaviour);
+        }
+    }
+
+    private void Start()
+    {
+        mRigidBody = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         Tick();
+    }
 
+    private void LateUpdate()
+    {
         if (mEnemy)
         {
-            if (GameManager.Instance.GetPlayer() != null)
+            Vector3 target = FindClosestTarget();
+            if (target != null)
             {
-                LookAt2D(GameManager.Instance.GetPlayer().transform.position);
+                LookAt2D(target);
 
-                // Check if we are colliding with other enemy soldier
-                //  If so slow movement
-                var colliders = Physics.OverlapSphere(transform.position, 0.35f);
+                //float moveSpeed = 10.0f;
+                //if (Physics2D.OverlapCircle(transform.position, 0.35f, mContactFilter, new List<Collider2D>()) > 0)
+                //{
+                //    moveSpeed = mCollisionSpeed;
+                //}
+                //else
+                //{
+                //    moveSpeed = mSpeed;
+                //}
 
-                if (colliders.Length > 0)
+                //// Move towards the player
+                ////transform.position = Vector3.MoveTowards(transform.position, target, mSpeed * Time.deltaTime);
+                Vector3 dir = target - transform.position;
+
+                //mRigidBody.MovePosition(transform.position + (dir * mSpeed * Time.fixedDeltaTime));
+
+                //mRigidBody.AddForce(dir * mSpeed, ForceMode2D.Force);
+                //mRigidBody.velocity = Vector3.ClampMagnitude(mRigidBody.velocity, mSpeed);
+                if (mBehaviours.Count > 0)
                 {
-                    foreach (var collider in colliders)
+                    Vector2 force = Vector2.zero;
+                    foreach (Behaviour behaviour in mBehaviours)
                     {
-                        if (collider.tag == "Enemy")
-                        {
-                            // Reduce movement speed
-                            mSpeed *= 0.1f;
-                        }
+                        force += behaviour.BehaviorUpdate(this);
                     }
+
+                    mRigidBody.AddForce(force * Time.fixedDeltaTime);
+                    mRigidBody.velocity = Vector2.ClampMagnitude(mRigidBody.velocity, mSpeed);
                 }
-
-
-                // Move towards the player
-                transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.GetPlayer().transform.position, mSpeed * Time.deltaTime);
             }
             else
             {
@@ -138,9 +169,34 @@ public class EnemyBase : MonoBehaviour
                 foreach (GameObject p in players)
                 {
                     float currentDistance = Vector3.Distance(transform.position, p.transform.position);
+                    if (smallestDistance > currentDistance)
+                    {
+                        smallestDistance = currentDistance;
+                        closest = p.transform.position;
+                    }
                 }
             }
         }
-        return Vector3.zero;
+        return closest;
+    }
+
+    public Vector2 GetPos()
+    {
+        return new Vector2(transform.position.x, transform.position.y);
+    }
+
+    public Vector2 GetVel()
+    {
+        return mRigidBody.velocity;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (mRigidBody != null)
+        {
+            Gizmos.color = Color.magenta;
+
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(mRigidBody.velocity.x, mRigidBody.velocity.y, 0).normalized * 2);
+        }
     }
 }
