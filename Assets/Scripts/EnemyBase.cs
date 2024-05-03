@@ -51,9 +51,10 @@ public class EnemyBase : MonoBehaviour
 
         if (mEnemy)
         {
+            Vector3 target = FindClosestTarget();
             if (GameManager.Instance.GetPlayer() != null)
             {
-                LookAt2D(GameManager.Instance.GetPlayer().transform.position);
+                LookAt2D(target);
 
                 // Check if we are colliding with other enemy soldier
                 //  If so slow movement
@@ -73,7 +74,7 @@ public class EnemyBase : MonoBehaviour
 
 
                 // Move towards the player
-                transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.GetPlayer().transform.position, mSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target, mSpeed * Time.deltaTime);
             }
             else
             {
@@ -138,9 +139,14 @@ public class EnemyBase : MonoBehaviour
                 foreach (GameObject p in players)
                 {
                     float currentDistance = Vector3.Distance(transform.position, p.transform.position);
+                    if (currentDistance < smallestDistance)
+                    {
+                        smallestDistance = currentDistance;
+                        closest = p.transform.position;
+                    }
                 }
             }
         }
-        return Vector3.zero;
+        return closest;
     }
 }
