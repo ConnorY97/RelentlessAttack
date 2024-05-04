@@ -47,22 +47,14 @@ public class EnemyBase : MonoBehaviour
     {
         Tick();
 
-        if (mEnemy)
+        Vector3 target = FindClosestTarget();
+        if (target != new Vector3(420, 420, 420))
         {
-            Vector3 target = FindClosestTarget();
-            if (target != new Vector3(420, 420, 420))
-            {
-                LookAt2D(target);
+            LookAt2D(target);
 
-                // Move towards the player
-                //transform.position = Vector3.MoveTowards(transform.position, target, mSpeed * Time.deltaTime);
-                Vector3 move = (target - transform.position).normalized * mSpeed;
-                mCharacterController.Move(move * Time.deltaTime);
-            }
-        }
-        else
-        {
-            LookAt2D(GameManager.Instance.GetClosestEnemy(transform.position));
+            // Move towards the target
+            Vector3 move = (target - transform.position).normalized * mSpeed;
+            mCharacterController.Move(move * Time.deltaTime);
         }
     }
 
@@ -117,13 +109,13 @@ public class EnemyBase : MonoBehaviour
             GameObject.FindGameObjectsWithTag("Player", players);
             if (players.Count > 0)
             {
-                foreach (GameObject p in players)
+                foreach (GameObject player in players)
                 {
-                    float currentDistance = Vector3.Distance(transform.position, p.transform.position);
+                    float currentDistance = Vector3.Distance(transform.position, player.transform.position);
                     if (currentDistance < smallestDistance)
                     {
                         smallestDistance = currentDistance;
-                        closest = p.transform.position;
+                        closest = player.transform.position;
                     }
                 }
                 return closest;
@@ -135,7 +127,22 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            return Vector3.zero;
+            List<GameObject> enemies = new List<GameObject>();
+            GameObject.FindGameObjectsWithTag("Enemy", enemies);
+            if (enemies.Count > 0)
+            {
+                foreach (GameObject enemy in enemies)
+                {
+                    float currentDistance = Vector3.Distance(transform.position, enemy.transform.position);
+                    if (currentDistance < smallestDistance)
+                    {
+                        smallestDistance = currentDistance;
+                        closest = enemy.transform.position;
+                    }
+                }
+                return closest;
+            }
+            return new Vector3(420, 420, 420);
         }
     }
 }
