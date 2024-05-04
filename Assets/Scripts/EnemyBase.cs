@@ -43,7 +43,12 @@ public class EnemyBase : MonoBehaviour
         set { mTarget = value; }
     }
 
+    protected CharacterController mCharacterController = null;
 
+    private void Start()
+    {
+        mCharacterController = GetComponent<CharacterController>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -52,29 +57,14 @@ public class EnemyBase : MonoBehaviour
         if (mEnemy)
         {
             Vector3 target = FindClosestTarget();
-            if (GameManager.Instance.GetPlayer() != null)
+            if (target != null)
             {
                 LookAt2D(target);
 
-                // Check if we are colliding with other enemy soldier
-                //  If so slow movement
-                var colliders = Physics.OverlapSphere(transform.position, 0.35f);
-
-                if (colliders.Length > 0)
-                {
-                    foreach (var collider in colliders)
-                    {
-                        if (collider.tag == "Enemy")
-                        {
-                            // Reduce movement speed
-                            mSpeed *= 0.1f;
-                        }
-                    }
-                }
-
-
                 // Move towards the player
-                transform.position = Vector3.MoveTowards(transform.position, target, mSpeed * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, target, mSpeed * Time.deltaTime);
+                Vector3 move = (target - transform.position).normalized * mSpeed;
+                mCharacterController.Move(move * Time.deltaTime);
             }
             else
             {
