@@ -13,6 +13,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     [Header("Health")]
+    [SerializeField]
     protected int mHitPoints = 0;
     public int HitPoints
     {
@@ -32,12 +33,20 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private TMP_Text mUIHitPoints = null;
 
-    [Header("WeaponPositions")]
-    [SerializeField]
-    List<GameObject> mWeaponPositions = new List<GameObject>();
-
     protected CharacterController mCharacterController = null;
 
+    [Header("Attacking Vars")]
+    [SerializeField]
+    protected float mAttackDistance = 1.0f;
+    public float AttackDistance
+    {
+        get { return mAttackDistance; }
+        set { mAttackDistance = value; }
+    }
+    [SerializeField]
+    protected bool mCanAttack = false;
+
+    protected GameObject mTarget = null;
     private void Start()
     {
         mCharacterController = GetComponent<CharacterController>();
@@ -47,13 +56,13 @@ public class EnemyBase : MonoBehaviour
     {
         Tick();
 
-        Vector3 target = FindClosestTarget();
-        if (target != new Vector3(420, 420, 420))
+        mTarget = FindClosestTarget(out mCanAttack);
+        if (mTarget != null)
         {
-            LookAt2D(target);
+            LookAt2D(mTarget.transform.position);
 
             // Move towards the target
-            Vector3 move = (target - transform.position).normalized * mSpeed;
+            Vector3 move = (mTarget.transform.position - transform.position).normalized * mSpeed;
             mCharacterController.Move(move * Time.deltaTime);
         }
     }
@@ -99,9 +108,10 @@ public class EnemyBase : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected Vector3 FindClosestTarget()
+    protected GameObject FindClosestTarget(out bool canAttack)
     {
-        Vector3 closest = Vector3.zero;
+        GameObject closest = null;
+        canAttack = false;
         float smallestDistance = float.MaxValue;
         if (mEnemy)
         {
@@ -115,14 +125,19 @@ public class EnemyBase : MonoBehaviour
                     if (currentDistance < smallestDistance)
                     {
                         smallestDistance = currentDistance;
-                        closest = player.transform.position;
+                        closest = player;
+                    }
+
+                    if (currentDistance < mAttackDistance)
+                    {
+                        canAttack = true;
                     }
                 }
                 return closest;
             }
             else
             {
-                return new Vector3(420, 420, 420);
+                return null;
             }
         }
         else
@@ -137,12 +152,31 @@ public class EnemyBase : MonoBehaviour
                     if (currentDistance < smallestDistance)
                     {
                         smallestDistance = currentDistance;
-                        closest = enemy.transform.position;
+                        closest = enemy;
+                    }
+
+                    if (currentDistance < mAttackDistance)
+                    {
+                        canAttack = true;
                     }
                 }
                 return closest;
             }
-            return new Vector3(420, 420, 420);
+            return null;
+        }
+    }
+
+    public void Attacked(int damageDelt)
+    {
+        mHitPoints -= damageDelt;
+
+        if (mHitPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            mUIHitPoints.text = mHitPoints.ToString();
         }
     }
 }
