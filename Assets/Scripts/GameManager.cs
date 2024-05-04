@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerType
+{
+    SOLDIER,
+    NONE
+}
+
 public class GameManager : MonoBehaviour
 {
     [Header("Grid vars")]
@@ -39,11 +45,6 @@ public class GameManager : MonoBehaviour
             mCellsReference.init();
         }
 
-        // Create the player
-        mPlayer = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
-        mPlayer.Init(10, null, false, mSpeed);
-        mPlayer.tag = "Player";
-
         // Total amount of soldier we can spawn
         int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
         int currentRow = 0;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             // Do spawn stuff here
             Soldier instance = Instantiate(mSoldierPrefab, transform.position, Quaternion.identity);
-            instance.Init(1, mPlayer.gameObject, true, mSpeed / 2);
+            instance.Init(1, true, mSpeed / 2);
 
             instance.name = $"Soldier {i}";
             instance.tag = "Enemy";
@@ -106,6 +107,14 @@ public class GameManager : MonoBehaviour
         }
 
         return closestEnemy;
+    }
+
+    public void SpawnSoldier()
+    {
+        // Create the player
+        mPlayer = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
+        mPlayer.Init(10, false, mSpeed);
+        mPlayer.tag = "Player";
     }
 
 }

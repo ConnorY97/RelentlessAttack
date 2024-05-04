@@ -36,13 +36,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     List<GameObject> mWeaponPositions = new List<GameObject>();
 
-    protected GameObject mTarget = null;
-    public GameObject Target
-    {
-        get { return mTarget; }
-        set { mTarget = value; }
-    }
-
     protected CharacterController mCharacterController = null;
 
     private void Start()
@@ -57,7 +50,7 @@ public class EnemyBase : MonoBehaviour
         if (mEnemy)
         {
             Vector3 target = FindClosestTarget();
-            if (target != null)
+            if (target != new Vector3(420, 420, 420))
             {
                 LookAt2D(target);
 
@@ -66,14 +59,14 @@ public class EnemyBase : MonoBehaviour
                 Vector3 move = (target - transform.position).normalized * mSpeed;
                 mCharacterController.Move(move * Time.deltaTime);
             }
-            else
-            {
-                LookAt2D(GameManager.Instance.GetClosestEnemy(transform.position));
-            }
+        }
+        else
+        {
+            LookAt2D(GameManager.Instance.GetClosestEnemy(transform.position));
         }
     }
 
-    public virtual void Init(int hitPoints, GameObject target, bool isEnemy, float speed)
+    public virtual void Init(int hitPoints, bool isEnemy, float speed)
     {
         mEnemy = isEnemy;
 
@@ -81,8 +74,6 @@ public class EnemyBase : MonoBehaviour
 
         // Set hit points ui
         mUIHitPoints.text = mHitPoints.ToString();
-
-        mTarget = target;
 
         mSpeed = speed;
     }
@@ -135,8 +126,16 @@ public class EnemyBase : MonoBehaviour
                         closest = p.transform.position;
                     }
                 }
+                return closest;
+            }
+            else
+            {
+                return new Vector3(420, 420, 420);
             }
         }
-        return closest;
+        else
+        {
+            return Vector3.zero;
+        }
     }
 }

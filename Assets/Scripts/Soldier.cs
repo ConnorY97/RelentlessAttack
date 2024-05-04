@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Soldier : EnemyBase
 {
-    public override void Init(int hitPoints, GameObject target, bool isEnemy, float speed)
+    public override void Init(int hitPoints, bool isEnemy, float speed)
     {
-        base.Init(hitPoints, target, isEnemy, speed);
+        base.Init(hitPoints, isEnemy, speed);
     }
 
     public override void Tick()
