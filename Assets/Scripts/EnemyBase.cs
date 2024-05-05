@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Filters;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -22,12 +23,16 @@ public class EnemyBase : MonoBehaviour
     }
 
     [Header("Movement")]
-    protected float mSpeed = 10;
+    [SerializeField]
+    protected float mSpeed = 10.0f;
     public float Speed
     {
         get { return mSpeed; }
         set { mSpeed = value; }
     }
+    [SerializeField]
+    protected float mTurnSpeed = 10.0f;
+    protected Vector3 mPreviousLookAt = Vector3.zero;
 
     [Header("UI")]
     [SerializeField]
@@ -50,6 +55,7 @@ public class EnemyBase : MonoBehaviour
     private void Start()
     {
         mCharacterController = GetComponent<CharacterController>();
+        mPreviousLookAt = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
     }
     // Update is called once per frame
     void Update()
@@ -85,6 +91,7 @@ public class EnemyBase : MonoBehaviour
 
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
 
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(look), Time.fixedDeltaTime * mTurnSpeed);
         transform.Rotate(0, 0, angle);
     }
 

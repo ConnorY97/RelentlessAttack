@@ -1,8 +1,10 @@
 using System.Collections;
+
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor((typeof(CellsDebugger)))]
 public class CellDebuggerEditor : Editor
 {
@@ -17,3 +19,4 @@ public class CellDebuggerEditor : Editor
         }
     }
 }
+#endif
