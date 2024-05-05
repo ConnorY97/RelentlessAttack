@@ -27,7 +27,7 @@ public class Soldier : EnemyBase
         {
             mWeapon.transform.position = Vector3.MoveTowards(mWeapon.transform.position, mTarget.transform.position, mAttackSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(mSpearHead.transform.position, mTarget.transform.position) > 0.0001f)
+            if (Vector3.Distance(mSpearHead.transform.position, mTarget.transform.position) < 0.25f)
             {
                 mTarget.GetComponent<EnemyBase>().Attacked(1);
                 mWeapon.transform.position = mSeathedPosition.transform.position;
