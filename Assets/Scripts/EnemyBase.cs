@@ -65,7 +65,7 @@ public class EnemyBase : MonoBehaviour
         mTarget = FindClosestTarget(out mCanAttack);
         if (mTarget != null)
         {
-            LookAt2D(mTarget.transform.position);
+            SmoothLookAt2D(mTarget.transform.position);
 
             // Move towards the target
             Vector3 move = (mTarget.transform.position - transform.position).normalized * mSpeed;
@@ -93,6 +93,16 @@ public class EnemyBase : MonoBehaviour
 
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(look), Time.fixedDeltaTime * mTurnSpeed);
         transform.Rotate(0, 0, angle);
+    }
+
+    private void SmoothLookAt2D(Vector3 target)
+    {
+        Vector3 look = target - transform.position;
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
+        Quaternion desiredRotation = Quaternion.Euler(0, 0, angle);
+
+        // Smoothly rotate towards the desired rotation
+        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * mTurnSpeed);
     }
 
     public virtual void Tick() { }
@@ -179,6 +189,14 @@ public class EnemyBase : MonoBehaviour
 
         if (mHitPoints <= 0)
         {
+            if (mEnemy)
+            {
+                GameManager.Instance.RemoveDeadEnity(this, true);
+            }
+            else
+            {
+                GameManager.Instance.RemoveDeadEnity(this, false);
+            }
             Destroy(gameObject);
             GameManager.Instance.IncrementScore(1);
         }

@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     public Soldier mSoldierPrefab = null;
     public GameObject mPlayerSpawn = null;
     
-    [Header("Enemy Tracking")]
+    [Header("Entity Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
+    private List<EnemyBase> mPlayerList = new List<EnemyBase>();
     private Soldier mPlayer = null;
     
     [Header("Enemy Vars")]
@@ -30,9 +31,9 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public Button mSoldierSpawnButton = null;
     public TMP_Text mUIScoreValue = null;
+    public TMP_Text mGameOverText = null;
 
-    private int mScore = 0;
-
+    private int mScore = 5;
 
     // Singleton Functions
     public static GameManager Instance { get; private set; }
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < totalEnemySpawn; i++)
         {
             // Do spawn stuff here
-            Soldier instance = Instantiate(mSoldierPrefab, transform.position, Quaternion.identity);
+            Soldier instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0,0,-90,0));
             instance.Init(1, true, mSpeed / 2);
 
             instance.name = $"Soldier {i}";
@@ -81,6 +82,23 @@ public class GameManager : MonoBehaviour
             currentCol++;
 
             mEnemyBaseList.Add(instance);
+        }
+    }
+
+    private void Update()
+    {
+        // Checking game state
+        if (mScore < 5 && mPlayerList.Count == 0)
+        {
+            // Player lost
+            mGameOverText.text = "You Lost!";
+            mGameOverText.gameObject.SetActive(true);
+        }
+        else if (mEnemyBaseList.Count == 0)
+        {
+            // Player won
+            mGameOverText.text = "You Won!";
+            mGameOverText.gameObject.SetActive(true);
         }
     }
 
@@ -123,9 +141,21 @@ public class GameManager : MonoBehaviour
     public void SpawnSoldier()
     {
         // Create the player
-        mPlayer = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
-        mPlayer.Init(10, false, mSpeed);
-        mPlayer.tag = "Player";
+        Soldier instance = Instantiate(mSoldierPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
+        instance.Init(10, false, mSpeed);
+        instance.tag = "Player";
+
+        // Update the score when you purchase a soldier
+        mScore -= 5;
+        mUIScoreValue.text = mScore.ToString();
+
+        // Check if you have enough to spawn another soldier
+        if (mScore < 5)
+        {
+            mSoldierSpawnButton.interactable = false;
+        }
+
+        mPlayerList.Add(instance);
     }
 
     public void IncrementScore(int increment)
@@ -133,5 +163,22 @@ public class GameManager : MonoBehaviour
         mScore += increment;
 
         mUIScoreValue.text = mScore.ToString();
+
+        if (mScore >= 5)
+        {
+            mSoldierSpawnButton.interactable = true;
+        }
+    }
+
+    public void RemoveDeadEnity(EnemyBase deadEntity, bool isEnemy)
+    {
+        if (isEnemy)
+        {
+            mEnemyBaseList.Remove(deadEntity);
+        }
+        else
+        {
+            mPlayerList.Remove(deadEntity);
+        }
     }
 }
