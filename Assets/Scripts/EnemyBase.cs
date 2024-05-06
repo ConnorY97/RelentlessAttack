@@ -180,6 +180,7 @@ public class EnemyBase : MonoBehaviour
         if (mHitPoints <= 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.IncrementScore(1);
         }
         else
         {

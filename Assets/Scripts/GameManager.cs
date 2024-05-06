@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum PlayerType
 {
@@ -13,14 +15,23 @@ public class GameManager : MonoBehaviour
     [Header("Grid vars")]
     public bool mDrawGizmos = false;
     public CellsDebugger mCellsReference;
+    
     [Header("Prefab vars")]
     public Soldier mSoldierPrefab = null;
     public GameObject mPlayerSpawn = null;
-    // Enemy tracker
+    
+    [Header("Enemy Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
     private Soldier mPlayer = null;
+    
     [Header("Enemy Vars")]
     public float mSpeed = 5;
+
+    [Header("UI")]
+    public Button mSoldierSpawnButton = null;
+    public TMP_Text mUIScoreValue = null;
+
+    private int mScore = 0;
 
 
     // Singleton Functions
@@ -117,4 +128,10 @@ public class GameManager : MonoBehaviour
         mPlayer.tag = "Player";
     }
 
+    public void IncrementScore(int increment)
+    {
+        mScore += increment;
+
+        mUIScoreValue.text = mScore.ToString();
+    }
 }
