@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +15,17 @@ public class GameManager : MonoBehaviour
 {
     [Header("Grid vars")]
     public bool mDrawGizmos = false;
-    public CellsDebugger mCellsReference;
-    
+    public CellsDebugger mCellsReference;// = null;
+
     [Header("Prefab vars")]
     public Soldier mSoldierPrefab = null;
     public GameObject mPlayerSpawn = null;
-    
+
     [Header("Entity Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
     private List<EnemyBase> mPlayerList = new List<EnemyBase>();
     private Soldier mPlayer = null;
-    
+
     [Header("Enemy Vars")]
     public float mSpeed = 5;
 
