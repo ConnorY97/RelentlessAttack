@@ -1,5 +1,3 @@
-using NUnit.Framework.Internal.Filters;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -80,7 +78,8 @@ public class EnemyBase : MonoBehaviour
         mHitPoints = hitPoints;
 
         // Set hit points ui
-        mUIHitPoints.text = mHitPoints.ToString();
+
+        SetUIText(mHitPoints.ToString());
 
         mSpeed = speed;
     }
@@ -115,7 +114,7 @@ public class EnemyBase : MonoBehaviour
             Dead();
         }
 
-        mUIHitPoints.text = mHitPoints.ToString();
+        SetUIText(mHitPoints.ToString());
     }
 
     protected virtual void Dead()
@@ -202,7 +201,18 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            mUIHitPoints.text = mHitPoints.ToString();
+            if (mUIHitPoints != null)
+            {
+                SetUIText(mHitPoints.ToString());
+            }
+        }
+    }
+
+    private void SetUIText(string text)
+    {
+        if (mUIHitPoints != null)
+        {
+            mUIHitPoints.text = text;
         }
     }
 }

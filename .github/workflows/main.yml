@@ -100,9 +100,9 @@ jobs:
     needs: test-runner
     name: Build for Android
     runs-on: ubuntu-latest
-    strategy: 
+    strategy:
       fail-fast: false
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -118,7 +118,7 @@ jobs:
             Library-
             Library-${{matrix.projectName}}-
             Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
-      
+
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
@@ -128,7 +128,6 @@ jobs:
         with:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: Android
-          with: -nographics
           versioning: Semantic
 
       - name: Uploading the build
@@ -136,9 +135,9 @@ jobs:
         with:
           name: AndroidBuild
           path: build/Android
-          
+
   publish-to-itch:
-      name: Publish to Itch
+      name: Publish  to Itch
       runs-on: ubuntu-latest
       needs: build-webgl
       steps:

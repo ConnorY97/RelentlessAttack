@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(fileName = "CellsReference", menuName = "ScriptableObjects/SpawnCellsReferenceObject", order = 1)]
 public class CellsDebugger : ScriptableObject
