@@ -73,15 +73,15 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Init(int hitPoints, bool isEnemy, float speed)
     {
-        mEnemy = false;// isEnemy;
+        mEnemy = isEnemy;
 
-        mHitPoints = 1;// hitPoints;
+        mHitPoints = hitPoints;
 
         // Set hit points ui
 
         SetUIText(mHitPoints.ToString());
 
-        mSpeed = 1;// speed;
+        mSpeed = speed;
     }
 
     private void LookAt2D(Vector3 target)
@@ -184,7 +184,7 @@ public class EnemyBase : MonoBehaviour
 
     public void Attacked(int damageDelt)
     {
-        mHitPoints -= damageDelt + 1;
+        mHitPoints -= damageDelt;
 
         if (mHitPoints <= 0)
         {
