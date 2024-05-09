@@ -26,6 +26,10 @@ public class TestGameSetUp
         testEnemmy.Attacked(5);
         Assert.AreEqual(5, testEnemmy.HitPoints);
 
-        yield return null;
+        // Dead
+        testEnemmy.Attacked(5);
+        yield return new WaitForEndOfFrame();
+
+        Assert.IsTrue(gameObject == null);
     }
 }
