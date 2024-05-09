@@ -54,6 +54,17 @@ jobs:
     needs: test-runner
     name: Build for WebGL
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        unityVersion:
+          - 2023.2.18f1
+        targetPlatform:
+          - WebGL
+        projectName:
+          - RelentlessAttack
+        projectPath:
+          - ./
 
     steps:
       - name: Checkout repo
