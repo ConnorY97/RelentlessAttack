@@ -28,6 +28,7 @@ public class EnemyBase : MonoBehaviour
         get { return mSpeed; }
         set { mSpeed = value; }
     }
+
     [SerializeField]
     protected float mTurnSpeed = 10.0f;
     protected Vector3 mPreviousLookAt = Vector3.zero;
@@ -50,11 +51,16 @@ public class EnemyBase : MonoBehaviour
     protected bool mCanAttack = false;
 
     protected GameObject mTarget = null;
+
+    [Header("Enemy Design")]
+    protected Material mMaterial = null;
+
     private void Start()
     {
         mCharacterController = GetComponent<CharacterController>();
         mPreviousLookAt = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -82,16 +88,20 @@ public class EnemyBase : MonoBehaviour
         SetUIText(mHitPoints.ToString());
 
         mSpeed = speed;
-    }
 
-    private void LookAt2D(Vector3 target)
-    {
-        Vector3 look = transform.InverseTransformPoint(target);
-
-        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
-
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(look), Time.fixedDeltaTime * mTurnSpeed);
-        transform.Rotate(0, 0, angle);
+        SpriteRenderer rend = GetComponent<SpriteRenderer>();
+        if (rend != null)
+        {
+            Material mat = rend.material;
+            if (mEnemy)
+            {
+                mat.color = Color.red;
+            }
+            else
+            {
+                mat.color = Color.green;
+            }
+        }
     }
 
     private void SmoothLookAt2D(Vector3 target)
@@ -105,25 +115,6 @@ public class EnemyBase : MonoBehaviour
     }
 
     public virtual void Tick() { }
-
-    protected virtual void Damage(int damage)
-    {
-        mHitPoints -= damage;
-        if (mHitPoints <= 0)
-        {
-            Dead();
-        }
-
-        SetUIText(mHitPoints.ToString());
-    }
-
-    protected virtual void Dead()
-    {
-        // Death stuff
-        // Make sure it cleans any references to itself
-        Destroy(this.gameObject);
-    }
-
     protected GameObject FindClosestTarget(out bool canAttack)
     {
         GameObject closest = null;
@@ -190,14 +181,19 @@ public class EnemyBase : MonoBehaviour
         {
             if (mEnemy)
             {
-                GameManager.Instance.RemoveDeadEnity(this, true);
+                if (GameManager.Instance != null)
+                    GameManager.Instance.RemoveDeadEnity(this, true);
             }
             else
             {
-                GameManager.Instance.RemoveDeadEnity(this, false);
+                if (GameManager.Instance != null)
+                    GameManager.Instance.RemoveDeadEnity(this, false);
             }
+
             Destroy(gameObject);
-            GameManager.Instance.IncrementScore(1);
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.IncrementScore(1);
         }
         else
         {
