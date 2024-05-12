@@ -21,7 +21,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Entity Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
+    public List<EnemyBase> EnemyList
+    {
+        get { return mEnemyBaseList; }
+    }
     private List<EnemyBase> mPlayerList = new List<EnemyBase>();
+    public List<EnemyBase> PlayerList
+    {
+        get { return mPlayerList; }
+    }
     private Soldier mPlayer = null;
 
     [Header("Enemy Vars")]
@@ -33,6 +41,10 @@ public class GameManager : MonoBehaviour
     public TMP_Text mGameOverText = null;
 
     private int mScore = 5;
+    public int Score
+    {
+        get { return mScore; }
+    }
 
     // Singleton Functions
     public static GameManager Instance { get; private set; }
@@ -47,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -118,24 +131,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject GetPlayer() { return mPlayer.gameObject; }
-
-    public Vector3 GetClosestEnemy(Vector3 currentPosition)
-    {
-        float smallestDistance = float.MaxValue;
-        Vector3 closestEnemy = Vector3.zero;
-
-        foreach (var enemyBase in mEnemyBaseList)
-        {
-            float currentDistance = Vector3.Distance(currentPosition, enemyBase.transform.position);
-            if (currentDistance < smallestDistance)
-            {
-                smallestDistance = currentDistance;
-                closestEnemy = enemyBase.transform.position;
-            }
-        }
-
-        return closestEnemy;
-    }
 
     public void SpawnSoldier()
     {

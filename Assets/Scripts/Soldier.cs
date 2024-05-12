@@ -45,14 +45,4 @@ public class Soldier : EnemyBase
             mWeapon.transform.position = Vector3.MoveTowards(mWeapon.transform.position, mSeathedPosition.transform.position, mAttackSpeed * Time.deltaTime);
         }
     }
-
-    public void Attack(GameObject targetToAttack)
-    {
-        EnemyBase attackedTarget = targetToAttack.GetComponent<EnemyBase>();
-
-        if (attackedTarget != null && attackedTarget == mTarget)
-        {
-            attackedTarget.Attacked(1);
-        }
-    }
 }
