@@ -7,17 +7,29 @@ public class EnemyBase : MonoBehaviour
     [Header("Enemy Settings")]
     [SerializeField]
     protected bool mIsEnemy = true;
-    public bool IsEnemy { get; set; }
+    public bool IsEnemy
+    {
+        get { return mIsEnemy; }
+        set { mIsEnemy = value; }
+    }
 
     [Header("Health")]
     [SerializeField]
-    protected int mHitPoints = 0;
-    public int HitPoints { get; set; }
+    protected int mHitPoints = 10;
+    public int HitPoints
+    {
+        get { return mHitPoints; }
+        set { mHitPoints = value; }
+    }
 
     [Header("Movement")]
     [SerializeField]
     protected float mSpeed = 10.0f;
-    public float Speed { get; set; }
+    public float Speed
+    {
+        get { return mSpeed; }
+        set { mSpeed = value; }
+    }
 
     [SerializeField]
     protected float mTurnSpeed = 10.0f;
@@ -62,9 +74,15 @@ public class EnemyBase : MonoBehaviour
         mSpeed = speed;
 
         SpriteRenderer rend = GetComponent<SpriteRenderer>();
-        mMaterial = rend.material;
-        if (mMaterial != null)
-            mMaterial.color = mIsEnemy ? Color.red : Color.green;
+        if (rend != null)
+        {
+            mMaterial = rend.material;
+            if (mMaterial != null)
+            {
+                if (mMaterial != null)
+                    mMaterial.color = mIsEnemy ? Color.red : Color.green;
+            }
+        }
     }
 
     protected GameObject FindClosestTarget(string tag, out bool canAttack)
@@ -102,21 +120,24 @@ public class EnemyBase : MonoBehaviour
 
     public void Attacked(int damage)
     {
-        mHitPoints -= damage;
-
-        if (mHitPoints <= 0)
+        if (damage >= 0)
         {
-            if (mGameManager != null)
-                mGameManager.RemoveDeadEnity(this, mIsEnemy);
+            mHitPoints -= damage;
 
-            Destroy(gameObject);
+            if (mHitPoints <= 0)
+            {
+                if (mGameManager != null)
+                    mGameManager.RemoveDeadEnity(this, mIsEnemy);
 
-            if (mGameManager != null)
-                mGameManager.IncrementScore(1);
-        }
-        else if (mUiHitPoints != null)
-        {
-            SetUIText(mHitPoints.ToString());
+                Destroy(gameObject);
+
+                if (mGameManager != null)
+                    mGameManager.IncrementScore(1);
+            }
+            else if (mUiHitPoints != null)
+            {
+                SetUIText(mHitPoints.ToString());
+            }
         }
     }
 
