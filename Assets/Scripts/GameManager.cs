@@ -21,9 +21,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Entity Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
-    public List<EnemyBase> EnemyList { get; }
+    public List<EnemyBase> EnemyList
+    {
+        get { return mEnemyBaseList; }
+    }
     private List<EnemyBase> mPlayerList = new List<EnemyBase>();
-    public List<EnemyBase> PlayerList { get; }
+    public List<EnemyBase> PlayerList
+    {
+        get { return mPlayerList; }
+    }
     private Soldier mPlayer = null;
 
     [Header("Enemy Vars")]
