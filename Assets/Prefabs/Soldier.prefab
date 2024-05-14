@@ -547,19 +547,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07915ba9a94bcbf45b6b3b6df1ae6460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mIsEnemy: 1
   mHitPoints: 10
   mSpeed: 5
   mTurnSpeed: 1
-  mUIHitPoints: {fileID: 7218410777808160393}
+  mUiHitPoints: {fileID: 7218410777808160393}
   mAttackDistance: 1
-  mCanAttack: 0
   mWeapon: {fileID: 193244612378748006}
   mSpearHead: {fileID: 4971546261092586956}
   mSeathedPosition: {fileID: 5965197213869287485}
   mAttackSpeed: 0.5
   mAttackDelay: 0.5
-  mAttackTime: 0
-  time: 0
 --- !u!143 &1612212042012989437
 CharacterController:
   m_ObjectHideFlags: 0

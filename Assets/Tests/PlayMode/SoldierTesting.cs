@@ -20,7 +20,7 @@ public class SoldierTesting
 
         soldier.Init(setHealth, isEnemy, setSpeed);
         Assert.IsTrue(soldier.HitPoints == setHealth, "Failed to set health");
-        Assert.IsTrue(soldier.Enemy == isEnemy, "Failed to set enemy");
+        Assert.IsTrue(soldier.IsEnemy == isEnemy, "Failed to set enemy");
         Assert.IsTrue(soldier.Speed == setSpeed, "Failed to set speed");
 
         soldier.Attacked(attackDamage);
