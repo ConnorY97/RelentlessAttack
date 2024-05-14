@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("Prefab vars")]
     public Soldier mSoldierPrefab = null;
     public GameObject mPlayerSpawn = null;
+    public Sniper mSniperPrefab = null;
 
     [Header("Entity Tracking")]
     private List<EnemyBase> mEnemyBaseList = new List<EnemyBase>();
@@ -76,11 +77,20 @@ public class GameManager : MonoBehaviour
         // Create soldiers
         for (int i = 0; i < totalEnemySpawn; i++)
         {
-            // Do spawn stuff here
-            Soldier instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0,0,-90,0));
+            EnemyBase instance = null;
+            if (i > 3)
+            {
+                instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                instance.name = $"Soldier {i}";
+            }
+            else
+            {
+                instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                instance.name = $"Sniper {i}";
+            }
+
             instance.Init(1, true, mSpeed / 2);
 
-            instance.name = $"Soldier {i}";
             instance.tag = "Enemy";
 
             if (i != 0 && i % mCellsReference.mCol == 0)

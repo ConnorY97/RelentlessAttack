@@ -30,18 +30,23 @@ public class EnemyBase : MonoBehaviour
         get { return mSpeed; }
         set { mSpeed = value; }
     }
-
     [SerializeField]
     protected float mTurnSpeed = 10.0f;
+
+    [Header("Attacking")]
+    [SerializeField]
+    protected float mAttackDistance = 1.0f;
+    [SerializeField]
+    protected float mAttackDelay = 1.0f;
+    [SerializeField]
+    protected float mAttackingSpeed = 5.0f;
+    protected float mAttackTime = 0.0f;
 
     [Header("UI")]
     [SerializeField]
     private TMP_Text mUiHitPoints = null;
 
-    [Header("Attacking Vars")]
-    [SerializeField]
-    protected float mAttackDistance = 1.0f;
-
+    [Header("Memeber Vars")]
     protected Material mMaterial = null;
     protected CharacterController mCharacterController = null;
     protected GameObject mTarget = null;
@@ -52,6 +57,9 @@ public class EnemyBase : MonoBehaviour
     {
         mCharacterController = GetComponent<CharacterController>();
         mGameManager = GameManager.Instance;
+
+        // Initialize attack time
+        mAttackTime = Time.time + mAttackDelay;
     }
 
     protected virtual void Update()
@@ -59,7 +67,14 @@ public class EnemyBase : MonoBehaviour
         mTarget = FindClosestTarget(mIsEnemy ? "Player" : "Enemy", out mCanAttack);
         if (mTarget != null)
         {
-            SmoothLookAt2D(mTarget.transform.position);
+            transform.rotation = SmoothLookAt2D();
+        }
+    }
+
+    protected virtual void Move()
+    {
+        if (mTarget != null)
+        {
             mCharacterController.Move((mTarget.transform.position - transform.position).normalized * mSpeed * Time.deltaTime);
         }
     }
@@ -108,14 +123,14 @@ public class EnemyBase : MonoBehaviour
         return closest;
     }
 
-    private void SmoothLookAt2D(Vector3 target)
+    protected Quaternion SmoothLookAt2D()
     {
-        Vector3 look = target - transform.position;
+        Vector3 look = mTarget.transform.position - transform.position;
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90.0f;
         Quaternion desiredRotation = Quaternion.Euler(0, 0, angle);
 
         // Smoothly rotate towards the desired rotation
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * mTurnSpeed);
+        return Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * mTurnSpeed);
     }
 
     public void Attacked(int damage)

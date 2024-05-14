@@ -1030,10 +1030,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e4a18bedf7c94cbbe62c44e5f1b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDrawGizmos: 0
+  mDrawGizmos: 1
   mCellsReference: {fileID: 11400000, guid: dc2baea35d9a1494fb992b065d54224f, type: 2}
   mSoldierPrefab: {fileID: 1824024166159688394, guid: 3741f91d05f5a57479eec2cdaa142a97, type: 3}
   mPlayerSpawn: {fileID: 568883341}
+  mSniperPrefab: {fileID: 5760904945932473475, guid: 5cdaae8f199516241b196dbabfd14dfe, type: 3}
   mSpeed: 0.75
   mSoldierSpawnButton: {fileID: 206828292}
   mUIScoreValue: {fileID: 1817426686}

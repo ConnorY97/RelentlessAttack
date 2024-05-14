@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 109
+  controlID: 12514
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 517.60004
-    width: 255.79999
-    height: 257.8
+    y: 568.8
+    width: 329.4
+    height: 206.59998
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 255.79999, y: 236.79999}
+  m_TargetSize: {x: 2560, y: 1440}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -78,22 +78,22 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 0500000000000000000000000b000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -102.32
-    m_HBaseRangeMax: 102.32
-    m_VBaseRangeMin: -94.71999
-    m_VBaseRangeMax: 94.71999
+    m_HBaseRangeMin: -1024
+    m_HBaseRangeMax: 1024
+    m_VBaseRangeMin: -576
+    m_VBaseRangeMax: 576
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -105,26 +105,26 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 255.79999
-      height: 236.79999
-    m_Scale: {x: 1.25, y: 1.25}
-    m_Translation: {x: 127.899994, y: 118.399994}
+      width: 329.4
+      height: 185.59998
+    m_Scale: {x: 0.16083984, y: 0.16083984}
+    m_Translation: {x: 164.7, y: 92.79999}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -102.31999
-      y: -94.71999
-      width: 204.63998
-      height: 189.43999
+      x: -1024
+      y: -576.9714
+      width: 2048
+      height: 1153.9427
     m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 319.75, y: 322.25}
+  m_defaultScale: 0.16083984
+  m_LastWindowPixelSize: {x: 411.75, y: 258.24997}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000000000000
+  m_LowResolutionForAspectRatios: 01000001000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
 --- !u!114 &3
@@ -146,12 +146,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 256.8
+    width: 330.4
     height: 722.8
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 50
+  controlID: 12375
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,8 +169,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 256.8
-    height: 444
+    width: 330.4
+    height: 495.2
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 5}
@@ -201,8 +201,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73.6
-    width: 255.79999
-    height: 423
+    width: 329.4
+    height: 474.2
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -233,17 +233,16 @@ MonoBehaviour:
     m_FilterByTypeIntersection: 0
   m_ViewMode: 0
   m_StartGridSize: 16
-  m_LastFolders:
-  - Assets
+  m_LastFolders: []
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\c_you\Documents\PersonalProjects\LeafBlowerRevolution
+  m_LastProjectPath: C:\Users\c_you\Documents\PersonalProjects\RelentlessAttack
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3a8a0000
     m_LastClickedID: 35386
-    m_ExpandedIDs: 00000000e68a0000e88a0000ea8a0000ec8a0000
+    m_ExpandedIDs: ffffffff000000005a8b00005c8b00005e8b0000608b0000628b0000648b0000668b0000c69e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -269,10 +268,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1adfffff
+    scrollPos: {x: 0, y: 39.799927}
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000e68a0000e88a0000ea8a0000ec8a0000
+    m_ExpandedIDs: ffffffff000000005a8b00005c8b00005e8b0000608b0000628b0000648b0000668b0000c69e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -289,7 +288,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 4}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -298,8 +297,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1adfffff
-    m_LastClickedInstanceID: -8422
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000aea20000d48a0000a4e90000ac100700801107005a80040034cc2b008ccf2b0084cf2b004acd00006cb70a003e4d0c008c500c00e24c0100dae10400c8280a00ae67000012ff0000e0890700
     m_RenameOverlay:
@@ -346,11 +345,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 444
-    width: 256.8
-    height: 278.8
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+    y: 495.2
+    width: 330.4
+    height: 227.59998
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -371,12 +370,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 256.8
+    x: 330.4
     y: 0
-    width: 770.39996
+    width: 756
     height: 722.8
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -403,9 +402,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 256.80002
+    x: 330.4
     y: 73.6
-    width: 768.39996
+    width: 754
     height: 701.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -813,10 +812,10 @@ MonoBehaviour:
       displayed: 1
       id: unity-scene-view-camera-mode-toolbar
       index: 1
-      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":24.799999237060548},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":25.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: 24, y: 24.8}
+      snapOffset: {x: 24, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       layout: 1
@@ -961,9 +960,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -2.6411052, y: -1.5425231, z: -0.07994638}
+    m_Target: {x: 1.3447977, y: 0.024042413, z: -0.040163975}
     speed: 2
-    m_Value: {x: -2.6411052, y: -1.5425231, z: -0.07994638}
+    m_Value: {x: 1.3447977, y: 0.024042413, z: -0.040163975}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1013,9 +1012,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.8789854
+    m_Target: 4.4427805
     speed: 2
-    m_Value: 7.8789854
+    m_Value: 4.4427805
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1061,12 +1060,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1027.2
+    x: 1086.4
     y: 0
-    width: 152.80005
+    width: 192
     height: 722.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -1093,9 +1092,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1027.2001
+    x: 1086.4
     y: 73.6
-    width: 150.80005
+    width: 190
     height: 701.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1113,7 +1112,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b4faffff
+      m_ExpandedIDs: e0a6feff545afffff8c0ffff42c1ffff04c3ffff1ac4ffff64c4fffff8c5fffff4c6ffff3ec7fffff0c8ffff02caffff4ccafffff0cbffff62ceffffacceffff50d0ffffa2d0ffffecd0ffff90d2ffff0ed5ffff58d5ffffecd6fffff0d7ffff3ad8ffffdad9ffff30daffff7adaffff2cdcffffd0e6ffff1ae7ffffbee8ffffe0e9ffff2aeaffffbeebffffe4ecffff2eedffffd2eeffff48f1ffff92f1ffff26f3ffff28f4ffff72f4ffff04f6ffff40f7ffff8af7ffff68f9ffffd0faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1130,7 +1129,7 @@ MonoBehaviour:
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 9}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1155,14 +1154,14 @@ MonoBehaviour:
   - {fileID: 15}
   m_Position:
     serializedVersion: 2
-    x: 1180
+    x: 1278.4
     y: 0
-    width: 356
+    width: 257.59998
     height: 722.8
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 110
+  controlID: 12515
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1180,10 +1179,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 356
-    height: 424.8
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 257.59998
+    height: 452.8
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 13}
@@ -1247,10 +1246,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1180
+    x: 1278.4
     y: 73.6
-    width: 355
-    height: 403.8
+    width: 256.59998
+    height: 431.8
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1268,8 +1267,8 @@ MonoBehaviour:
     m_CachedPref: -179
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -8422
-  m_LastVerticalScrollValue: 88.79999
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1285,21 +1284,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 424.8
-    width: 356
-    height: 298
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 16}
+    y: 452.8
+    width: 257.59998
+    height: 270
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
-  m_Selected: 0
+  - {fileID: 17}
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &16
 MonoBehaviour:
@@ -1322,10 +1322,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1180
-    y: 498.4
-    width: 355
-    height: 277
+    x: 1278.4
+    y: 526.4
+    width: 256.59998
+    height: 249
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1337,3 +1337,467 @@ MonoBehaviour:
     m_SaveData: []
     m_ContainerData: []
     m_OverlaysVisible: 1
+--- !u!114 &17
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+    m_TextWithWhitespace: "Test Runner\u200B"
+  m_Pos:
+    serializedVersion: 2
+    x: 1278.4
+    y: 526.4
+    width: 256.59998
+    height: 249
+  m_SerializedDataModeController:
+    m_DataMode: 0
+    m_PreferredDataMode: 0
+    m_SupportedDataModes: 
+    isAutomatic: 1
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_ContainerData: []
+    m_OverlaysVisible: 1
+  m_Spl:
+    ID: 12896
+    splitterInitialOffset: 263
+    currentActiveSplitter: -1
+    realSizes:
+    - 77.6
+    - 101.6
+    relativeSizes:
+    - 0.4340045
+    - 0.5659955
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 179.2
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 0
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 17}
+    m_NewResultList:
+    - id: 1036
+      uniqueId: '[LeafBlowerRevolution][suite]'
+      name: LeafBlowerRevolution
+      fullName: LeafBlowerRevolution
+      resultStatus: 0
+      duration: 2.2412307
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1003
+      uniqueId: '[PlayMode][C:/Users/c_you/Documents/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll][suite]'
+      name: PlayMode.dll
+      fullName: F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll
+      resultStatus: 0
+      duration: 2.1946385
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[LeafBlowerRevolution][suite]'
+    - id: 1001
+      uniqueId: 'PlayMode.dll/[PlayMode][EnemyBaseTesting][suite]'
+      name: EnemyBaseTesting
+      fullName: EnemyBaseTesting
+      resultStatus: 0
+      duration: 0.1006517
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1011
+      parentUniqueId: '[PlayMode][C:/Users/c_you/Documents/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll][suite]'
+    - id: 1005
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.AInit_Test][suite]'
+      name: AInit_Test
+      fullName: EnemyBaseTesting.AInit_Test
+      resultStatus: 0
+      duration: 0.06845
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: 'PlayMode.dll/[PlayMode][EnemyBaseTesting][suite]'
+    - id: 1002
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/AInit_Test/[PlayMode][EnemyBaseTesting.AInit_Test(10,True,10)]'
+      name: AInit_Test(10,True,10)
+      fullName: EnemyBaseTesting.AInit_Test(10,True,10)
+      resultStatus: 0
+      duration: 0.034922
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.AInit_Test][suite]'
+    - id: 1003
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/AInit_Test/[PlayMode][EnemyBaseTesting.AInit_Test(28,True,100)]'
+      name: AInit_Test(28,True,100)
+      fullName: EnemyBaseTesting.AInit_Test(28,True,100)
+      resultStatus: 0
+      duration: 0.0005206
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.AInit_Test][suite]'
+    - id: 1004
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/AInit_Test/[PlayMode][EnemyBaseTesting.AInit_Test(1,False,1)]'
+      name: AInit_Test(1,False,1)
+      fullName: EnemyBaseTesting.AInit_Test(1,False,1)
+      resultStatus: 0
+      duration: 0.0003629
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.AInit_Test][suite]'
+    - id: 1008
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.BAttacked_Test][suite]'
+      name: BAttacked_Test
+      fullName: EnemyBaseTesting.BAttacked_Test
+      resultStatus: 0
+      duration: 0.0123251
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: 'PlayMode.dll/[PlayMode][EnemyBaseTesting][suite]'
+    - id: 1006
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/BAttacked_Test/[PlayMode][EnemyBaseTesting.BAttacked_Test(10)]'
+      name: BAttacked_Test(10)
+      fullName: EnemyBaseTesting.BAttacked_Test(10)
+      resultStatus: 0
+      duration: 0.0009339
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1008
+      parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.BAttacked_Test][suite]'
+    - id: 1007
+      uniqueId: 'PlayMode.dll/EnemyBaseTesting/BAttacked_Test/[PlayMode][EnemyBaseTesting.BAttacked_Test(-50)]'
+      name: BAttacked_Test(-50)
+      fullName: EnemyBaseTesting.BAttacked_Test(-50)
+      resultStatus: 0
+      duration: 0.0004154
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1008
+      parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.BAttacked_Test][suite]'
+    - id: 1009
+      uniqueId: 'PlayMode.dll/[PlayMode][SniperTesting][suite]'
+      name: SniperTesting
+      fullName: SniperTesting
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: '[PlayMode][C:/Users/c_you/Documents/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll][suite]'
+    - id: 1010
+      uniqueId: 'PlayMode.dll/SniperTesting/[PlayMode][SniperTesting.SniperTestingSimplePasses]'
+      name: SniperTestingSimplePasses
+      fullName: SniperTesting.SniperTestingSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: 'PlayMode.dll/[PlayMode][SniperTesting][suite]'
+    - id: 1011
+      uniqueId: 'PlayMode.dll/SniperTesting/[PlayMode][SniperTesting.SniperTestingWithEnumeratorPasses]'
+      name: SniperTestingWithEnumeratorPasses
+      fullName: SniperTesting.SniperTestingWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: 'PlayMode.dll/[PlayMode][SniperTesting][suite]'
+    - id: 1001
+      uniqueId: 'PlayMode.dll/[PlayMode][SoldierTesting][suite]'
+      name: SoldierTesting
+      fullName: SoldierTesting
+      resultStatus: 0
+      duration: 2.0815463
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1004
+      parentUniqueId: '[PlayMode][F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll][suite]'
+    - id: 1013
+      uniqueId: 'PlayMode.dll/SoldierTesting/[PlayMode][SoldierTesting.ASoldierMovement_Test]'
+      name: ASoldierMovement_Test
+      fullName: SoldierTesting.ASoldierMovement_Test
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: 'PlayMode.dll/[PlayMode][SoldierTesting][suite]'
+    m_ResultText: AMovement_Test (2.068s)
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: cf3790d6
+      m_LastClickedID: -695191601
+      m_ExpandedIDs: 8008d3963aea259aa207fceeed2e6808cdd269232ad0702dd5a012529a73186600189e71ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_TrimLeadingAndTrailingWhitespace: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 17}
+    m_NewResultList:
+    - id: 1000
+      uniqueId: '[LeafBlowerRevolution][suite]'
+      name: LeafBlowerRevolution
+      fullName: LeafBlowerRevolution
+      resultStatus: 2
+      duration: 0.0194479
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1004
+      uniqueId: '[EditMode][F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/EditMode.dll][suite]'
+      name: EditMode.dll
+      fullName: F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/EditMode.dll
+      resultStatus: 2
+      duration: 0.0139487
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[LeafBlowerRevolution][suite]'
+    - id: 1001
+      uniqueId: 'EditMode.dll/[EditMode][GameManagerTesting][suite]'
+      name: GameManagerTesting
+      fullName: GameManagerTesting
+      resultStatus: 2
+      duration: 0.0119365
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1004
+      parentUniqueId: '[EditMode][F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1002
+      uniqueId: 'EditMode.dll/GameManagerTesting/[EditMode][GameManagerTesting.GameManagerTestingSimplePasses]'
+      name: GameManagerTestingSimplePasses
+      fullName: GameManagerTesting.GameManagerTestingSimplePasses
+      resultStatus: 2
+      duration: 0.0003153
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at GameManagerTesting.GameManagerTestingSimplePasses () [0x00001]
+        in F:\\PersonalProjects\\RelentlessAttack\\Assets\\Tests\\EditMode\\GameManagerTesting.cs:13
+        \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <f843d796055e4deaa447e7ba073cff5f>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: 'EditMode.dll/[EditMode][GameManagerTesting][suite]'
+    m_ResultText: "GameManagerTestingSimplePasses (0.000s)\n---\nSystem.NullReferenceException
+      : Object reference not set to an instance of an object\n---\nat GameManagerTesting.GameManagerTestingSimplePasses
+      () [0x00001] in F:\\PersonalProjects\\RelentlessAttack\\Assets\\Tests\\EditMode\\GameManagerTesting.cs:13
+      \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <f843d796055e4deaa447e7ba073cff5f>:0"
+    m_ResultStacktrace: "  at GameManagerTesting.GameManagerTestingSimplePasses ()
+      [0x00001] in F:\\PersonalProjects\\RelentlessAttack\\Assets\\Tests\\EditMode\\GameManagerTesting.cs:13
+      \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <f843d796055e4deaa447e7ba073cff5f>:0 "
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: e4b2e606
+      m_LastClickedID: 115782372
+      m_ExpandedIDs: a26c87938008d3963e85a9e3c0df930cffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_TrimLeadingAndTrailingWhitespace: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
