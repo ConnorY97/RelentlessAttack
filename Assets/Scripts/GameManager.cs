@@ -9,6 +9,7 @@ public enum PlayerType
     NONE
 }
 
+
 public class GameManager : MonoBehaviour
 {
     [Header("Grid vars")]
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
 

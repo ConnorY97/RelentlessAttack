@@ -553,7 +553,9 @@ MonoBehaviour:
   mTurnSpeed: 1
   mAttackDistance: 1
   mAttackDelay: 0.5
-  mAttackingSpeed: 5
+  mEnemyDelayModifier: 1.75
+  mAttackingSpeed: 1
+  mEnemyAttackSpeedModifier: 0.25
   mUiHitPoints: {fileID: 7218410777808160393}
   mWeapon: {fileID: 193244612378748006}
   mSpearHead: {fileID: 4971546261092586956}

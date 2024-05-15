@@ -33,7 +33,7 @@ public class Sniper : EnemyBase
         }
 
         // If a bullet exists, move it towards the player
-        if (mBullet && mTarget != null)
+        if (mBullet != null && mTarget != null)
         {
             mBullet.transform.position = Vector3.MoveTowards(mBullet.transform.position, mTarget.transform.position, mAttackingSpeed * Time.deltaTime);
 
@@ -43,6 +43,11 @@ public class Sniper : EnemyBase
 
                 Destroy(mBullet);
             }
+        }
+        // If the target has died but the bullet is still traveling destroy it
+        if (mBullet != null && mTarget == null)
+        {
+            Destroy(mBullet);
         }
     }
 }

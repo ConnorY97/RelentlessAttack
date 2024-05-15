@@ -39,8 +39,13 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected float mAttackDelay = 1.0f;
     [SerializeField]
+    protected float mEnemyDelayModifier = 1.5f;
+    [SerializeField]
     protected float mAttackingSpeed = 5.0f;
+    [SerializeField]
+    protected float mEnemyAttackSpeedModifier = 0.5f;
     protected float mAttackTime = 0.0f;
+
 
     [Header("UI")]
     [SerializeField]

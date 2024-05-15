@@ -17,8 +17,9 @@ public class Soldier : EnemyBase
 
         if (mIsEnemy)
         {
-            // Halfing the attacking speed of the enemy
-            mAttackingSpeed /= 2;
+            mAttackingSpeed *= mEnemyAttackSpeedModifier;
+
+            mAttackDelay *= mEnemyDelayModifier;
         }
     }
 
