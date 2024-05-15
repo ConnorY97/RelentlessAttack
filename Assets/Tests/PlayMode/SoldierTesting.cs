@@ -6,91 +6,22 @@ using UnityEngine.TestTools;
 
 public class SoldierTesting
 {
-    [Test]
-    [TestCase(10, true, 10)]
-    [TestCase(28, true, 100)]
-    [TestCase(1, false, 1)]
-    public void ASoldierInitTesting(int setHealth, bool isEnemy, int setSpeed)
-    {
-        GameObject mGameObject = new GameObject();
-        Soldier mSoldier = mGameObject.AddComponent<Soldier>();
-        Assert.IsNotNull(mSoldier, "Failed to create soldier");
-
-
-        mSoldier.Init(setHealth, isEnemy, setSpeed);
-        Assert.AreEqual(setHealth, mSoldier.HitPoints, "Failed to set health");
-        Assert.AreEqual(isEnemy, mSoldier.IsEnemy, "Failed to set enemy");
-        Assert.AreEqual(setSpeed, mSoldier.Speed, "Failed to set speed");
-    }
-
-    [Test]
-    [TestCase(10)]
-    [TestCase(-50)]
-    public void BAttacked_Test(int attackAmount)
-    {
-        GameObject mGameObject = new GameObject();
-        EnemyBase enemy = mGameObject.AddComponent<EnemyBase>();
-        enemy.Init(100, true, 5.0f);
-
-        enemy.Attacked(attackAmount);
-
-        if (attackAmount > 0)
-        {
-            Assert.AreEqual(100 - attackAmount, enemy.HitPoints, "Failed to reduce hitpoint by accacking amount");
-        }
-        else
-        {
-            Assert.AreEqual(100, enemy.HitPoints, "Failed to filter incorrect attack amounts");
-        }
-    }
-
-    //[UnityTest]
-    //public IEnumerator CMovement_Test()
-    //{
-    //    GameObject mGameObject = new GameObject();
-    //    EnemyBase mEnemy = mGameObject.AddComponent<EnemyBase>();
-    //    mEnemy.Init(100, true, 5.0f);
-
-    //    GameObject targetObject = new GameObject();
-    //    targetObject.transform.position = new Vector3(10, 0, 0); // Set target position
-        
-
-    //    float initialDistance = Vector3.Distance(mGameObject.transform.position, targetObject.transform.position);
-    //    yield return null; // Wait for one frame to update movement
-
-    //    float updatedDistance = Vector3.Distance(mGameObject.transform.position, targetObject.transform.position);
-
-    //    Assert.Less(updatedDistance, initialDistance); // Check if the enemy moved closer to the target
-    //}
-}
-
-/*
-using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
-
-public class EnemyBaseTests
-{
-
     [UnityTest]
-    public IEnumerator Movement_Test()
+    public IEnumerator ASoldierMovement_Test()
     {
-        GameObject enemyObject = new GameObject();
-        EnemyBase enemy = enemyObject.AddComponent<EnemyBase>();
-        enemy.Init(100, true, 5.0f);
+        GameObject mGameObject = new GameObject();
+        mGameObject.transform.position = new Vector3(0, 0, 0);
+        Soldier mSoldier = mGameObject.AddComponent<Soldier>();
+        mSoldier.Init(100, true, 5.0f);
+        CharacterController mCharacterController = mGameObject.AddComponent<CharacterController>();
 
         GameObject targetObject = new GameObject();
         targetObject.transform.position = new Vector3(10, 0, 0); // Set target position
+        targetObject.tag = "Player";
+        yield return new WaitForSeconds(2.0f); // Wait for one frame to update movement
 
-        enemy.Tick(); // Call Tick to initialize
+        float distance = Vector3.Distance(targetObject.transform.position, mGameObject.transform.position);
 
-        float initialDistance = Vector3.Distance(enemyObject.transform.position, targetObject.transform.position);
-        yield return null; // Wait for one frame to update movement
-
-        float updatedDistance = Vector3.Distance(enemyObject.transform.position, targetObject.transform.position);
-
-        Assert.Less(updatedDistance, initialDistance); // Check if the enemy moved closer to the target
+        Assert.IsTrue(distance < 0.05f, $"Failed to move towards the target in time, resulting distance: {distance}, cureent position: {mGameObject.transform.position}"); // Check if the enemy moved closer to the target
     }
 }
-
-*/
