@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum PlayerType
@@ -40,12 +42,24 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public Button mSoldierSpawnButton = null;
     public TMP_Text mUIScoreValue = null;
-    public TMP_Text mGameOverText = null;
+    public TMP_Text mUIGameOver = null;
 
     private int mScore = 5;
     public int Score
     {
         get { return mScore; }
+    }
+
+    private string mCurrentSceneName = "";
+    public string CurrentSceneName
+    {
+        get { return mCurrentSceneName; }
+    }
+
+    private bool mInGame = false;
+    public bool InGame
+    {
+        get { return mInGame; }
     }
 
     // Singleton Functions
@@ -68,62 +82,77 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (mCellsReference.mCells == null)
+        switch (mCurrentSceneName)
         {
-            mCellsReference.init();
-        }
+            case "Soldier":
+                if (!SetUpGameScene())
+                    return;
 
-        // Total amount of soldier we can spawn
-        int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
-        int currentRow = 0;
-        int currentCol = 0;
-        // Create soldiers
-        for (int i = 0; i < totalEnemySpawn; i++)
-        {
-            EnemyBase instance = null;
-            if (i > 3)
-            {
-                instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                instance.name = $"Soldier {i}";
-            }
-            else
-            {
-                instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                instance.name = $"Sniper {i}";
-            }
+                if (mCellsReference.mCells == null)
+                {
+                    mCellsReference.init();
+                }
 
-            instance.Init(1, true, mSpeed / 2);
+                // Total amount of soldier we can spawn
+                int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
+                int currentRow = 0;
+                int currentCol = 0;
+                // Create soldiers
+                for (int i = 0; i < totalEnemySpawn; i++)
+                {
+                    EnemyBase instance = null;
+                    if (i > 3)
+                    {
+                        instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                        instance.name = $"Soldier {i}";
+                    }
+                    else
+                    {
+                        instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                        instance.name = $"Sniper {i}";
+                    }
 
-            instance.tag = "Enemy";
+                    instance.Init(1, true, mSpeed / 2);
 
-            if (i != 0 && i % mCellsReference.mCol == 0)
-            {
-                currentRow++;
-                currentCol = 0;
-            }
+                    instance.tag = "Enemy";
 
-            instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
+                    if (i != 0 && i % mCellsReference.mCol == 0)
+                    {
+                        currentRow++;
+                        currentCol = 0;
+                    }
 
-            currentCol++;
+                    instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
 
-            mEnemyBaseList.Add(instance);
+                    currentCol++;
+
+                    mEnemyBaseList.Add(instance);
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void Update()
     {
-        // Checking game state
-        if (mScore < 5 && mPlayerList.Count == 0)
+        if (mInGame)
         {
-            // Player lost
-            mGameOverText.text = "You Lost!";
-            mGameOverText.gameObject.SetActive(true);
-        }
-        else if (mEnemyBaseList.Count == 0)
-        {
-            // Player won
-            mGameOverText.text = "You Won!";
-            mGameOverText.gameObject.SetActive(true);
+            // Checking game state
+            if (mScore < 5 && mPlayerList.Count == 0)
+            {
+                // Player lost
+                mUIGameOver.text = "You Lost!";
+                mUIGameOver.gameObject.SetActive(true);
+                StartCoroutine(LoadMainMenuWithDelay(3));
+            }
+            else if (mEnemyBaseList.Count == 0)
+            {
+                // Player won
+                mUIGameOver.text = "You Won!";
+                mUIGameOver.gameObject.SetActive(true);
+                StartCoroutine(LoadMainMenuWithDelay(3));
+            }
         }
     }
 
@@ -187,5 +216,61 @@ public class GameManager : MonoBehaviour
         {
             mPlayerList.Remove(deadEntity);
         }
+    }
+
+    public void LoadSoldierScene()
+    {
+        SceneManager.LoadScene("Soldier");
+        mCurrentSceneName = "Soldier";
+        mInGame = true;
+    }
+    public void LoadSniperScene()
+    {
+        SceneManager.LoadScene("Sniper");
+        mCurrentSceneName = "Sniper";
+        mInGame = true;
+    }
+
+    private IEnumerator LoadMainMenuWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private bool SetUpGameScene()
+    {
+        bool successfullySetUp = true;
+        mPlayerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn");
+
+        if (mPlayerSpawn == null)
+        {
+            Debug.Log("Failed to find player spawn");
+            successfullySetUp = false;
+        }
+
+        mSoldierSpawnButton = GameObject.FindGameObjectWithTag("SoldierSpawnButton").GetComponent<Button>();
+
+        if (mSoldierSpawnButton == null)
+        {
+            Debug.Log("Failed to find soldier spawn button");
+            successfullySetUp = false;
+        }
+
+        mUIScoreValue = GameObject.FindGameObjectWithTag("ScoreValue").GetComponent<TMP_Text>();
+
+        if (mUIScoreValue == null)
+        {
+            Debug.Log("Failed to find score ui");
+            successfullySetUp = false;
+        }
+
+        mUIGameOver = GameObject.FindGameObjectWithTag("GameOverMsg").GetComponent<TMP_Text>();
+
+        if (mUIGameOver == null)
+        {
+            Debug.Log("Failed to find game over ui");
+            successfullySetUp = false;
+        }
+        return successfullySetUp;
     }
 }
