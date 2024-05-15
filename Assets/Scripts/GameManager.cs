@@ -78,60 +78,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        switch (mCurrentSceneName)
-        {
-            case "Soldier":
-                if (!SetUpGameScene())
-                    return;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-                if (mCellsReference.mCells == null)
-                {
-                    mCellsReference.init();
-                }
-
-                // Total amount of soldier we can spawn
-                int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
-                int currentRow = 0;
-                int currentCol = 0;
-                // Create soldiers
-                for (int i = 0; i < totalEnemySpawn; i++)
-                {
-                    EnemyBase instance = null;
-                    if (i > 3)
-                    {
-                        instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                        instance.name = $"Soldier {i}";
-                    }
-                    else
-                    {
-                        instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                        instance.name = $"Sniper {i}";
-                    }
-
-                    instance.Init(1, true, mSpeed / 2);
-
-                    instance.tag = "Enemy";
-
-                    if (i != 0 && i % mCellsReference.mCol == 0)
-                    {
-                        currentRow++;
-                        currentCol = 0;
-                    }
-
-                    instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
-
-                    currentCol++;
-
-                    mEnemyBaseList.Add(instance);
-                }
-                break;
-            default:
-                break;
-        }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
@@ -145,6 +99,7 @@ public class GameManager : MonoBehaviour
                 mUIGameOver.text = "You Lost!";
                 mUIGameOver.gameObject.SetActive(true);
                 StartCoroutine(LoadMainMenuWithDelay(3));
+                mInGame = false;
             }
             else if (mEnemyBaseList.Count == 0)
             {
@@ -152,6 +107,7 @@ public class GameManager : MonoBehaviour
                 mUIGameOver.text = "You Won!";
                 mUIGameOver.gameObject.SetActive(true);
                 StartCoroutine(LoadMainMenuWithDelay(3));
+                mInGame = false;
             }
         }
     }
@@ -218,26 +174,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadSoldierScene()
-    {
-        SceneManager.LoadScene("Soldier");
-        mCurrentSceneName = "Soldier";
-        mInGame = true;
-    }
-    public void LoadSniperScene()
-    {
-        SceneManager.LoadScene("Sniper");
-        mCurrentSceneName = "Sniper";
-        mInGame = true;
-    }
-
     private IEnumerator LoadMainMenuWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("MainMenu");
     }
 
-    private bool SetUpGameScene()
+    public bool SetUpGameScene()
     {
         bool successfullySetUp = true;
         mPlayerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn");
@@ -271,6 +214,65 @@ public class GameManager : MonoBehaviour
             Debug.Log("Failed to find game over ui");
             successfullySetUp = false;
         }
+
+        mUIGameOver.gameObject.SetActive(false);
+
         return successfullySetUp;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "Soldier":
+                if (!SetUpGameScene())
+                    return;
+
+                if (mCellsReference.mCells == null)
+                {
+                    mCellsReference.init();
+                }
+
+                // Total amount of soldier we can spawn
+                int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
+                int currentRow = 0;
+                int currentCol = 0;
+                // Create soldiers
+                for (int i = 0; i < totalEnemySpawn; i++)
+                {
+                    EnemyBase instance = null;
+                    if (i > 3)
+                    {
+                        instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                        instance.name = $"Soldier {i}";
+                    }
+                    else
+                    {
+                        instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
+                        instance.name = $"Sniper {i}";
+                    }
+
+                    instance.Init(1, true, mSpeed / 2);
+
+                    instance.tag = "Enemy";
+
+                    if (i != 0 && i % mCellsReference.mCol == 0)
+                    {
+                        currentRow++;
+                        currentCol = 0;
+                    }
+
+                    instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
+
+                    currentCol++;
+
+                    mEnemyBaseList.Add(instance);
+
+                    mInGame = true;
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
