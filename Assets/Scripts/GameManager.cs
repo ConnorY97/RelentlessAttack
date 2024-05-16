@@ -150,6 +150,26 @@ public class GameManager : MonoBehaviour
         mPlayerList.Add(instance);
     }
 
+    public void SpawnSniper()
+    {
+        // Create the player
+        Sniper instance = Instantiate(mSniperPrefab, mPlayerSpawn.transform.position, Quaternion.identity);
+        instance.Init(10, false, mSpeed);
+        instance.tag = "Player";
+
+        // Update the score when you purchase a soldier
+        mScore -= 5;
+        mUIScoreValue.text = mScore.ToString();
+
+        // Check if you have enough to spawn another soldier
+        if (mScore < 5)
+        {
+            mSoldierSpawnButton.interactable = false;
+        }
+
+        mPlayerList.Add(instance);
+    }
+
     public void IncrementScore(int increment)
     {
         mScore += increment;
@@ -220,56 +240,56 @@ public class GameManager : MonoBehaviour
         return successfullySetUp;
     }
 
+    private void SpawnEnemies(EnemyBase prefab, string enemyType)
+    {
+        if (!SetUpGameScene())
+            return;
+
+        if (mCellsReference.mCells == null)
+        {
+            mCellsReference.init();
+        }
+
+        // Total amount of soldier we can spawn
+        int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
+        int currentRow = 0;
+        int currentCol = 0;
+        // Create soldiers
+        for (int i = 0; i < totalEnemySpawn; i++)
+        {
+            EnemyBase instance = null;
+            instance = Instantiate(prefab, transform.position, new Quaternion(0, 0, -90, 0));
+            instance.name = $"{enemyType} {i}";
+
+            instance.Init(1, true, mSpeed / 2);
+
+            instance.tag = "Enemy";
+
+            if (i != 0 && i % mCellsReference.mCol == 0)
+            {
+                currentRow++;
+                currentCol = 0;
+            }
+
+            instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
+
+            currentCol++;
+
+            mEnemyBaseList.Add(instance);
+
+            mInGame = true;
+        }
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         switch (scene.name)
         {
             case "Soldier":
-                if (!SetUpGameScene())
-                    return;
-
-                if (mCellsReference.mCells == null)
-                {
-                    mCellsReference.init();
-                }
-
-                // Total amount of soldier we can spawn
-                int totalEnemySpawn = mCellsReference.mCol * mCellsReference.mRow;
-                int currentRow = 0;
-                int currentCol = 0;
-                // Create soldiers
-                for (int i = 0; i < totalEnemySpawn; i++)
-                {
-                    EnemyBase instance = null;
-                    if (i > 3)
-                    {
-                        instance = Instantiate(mSoldierPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                        instance.name = $"Soldier {i}";
-                    }
-                    else
-                    {
-                        instance = Instantiate(mSniperPrefab, transform.position, new Quaternion(0, 0, -90, 0));
-                        instance.name = $"Sniper {i}";
-                    }
-
-                    instance.Init(1, true, mSpeed / 2);
-
-                    instance.tag = "Enemy";
-
-                    if (i != 0 && i % mCellsReference.mCol == 0)
-                    {
-                        currentRow++;
-                        currentCol = 0;
-                    }
-
-                    instance.transform.position = mCellsReference.mCells[currentCol][currentRow];
-
-                    currentCol++;
-
-                    mEnemyBaseList.Add(instance);
-
-                    mInGame = true;
-                }
+                SpawnEnemies(mSoldierPrefab, "Soldier");
+                break;
+            case "Sniper":
+                SpawnEnemies(mSniperPrefab, "Sniper");
                 break;
             default:
                 break;
