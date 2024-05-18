@@ -91,8 +91,6 @@ jobs:
         with:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          screen-height: 1680
-          screen-width: 840
 
       - name: Uploading the build
         uses: actions/upload-artifact@v4
