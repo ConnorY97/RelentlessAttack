@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pistrol_0: 4421683111517587626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
