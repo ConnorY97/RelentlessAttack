@@ -10,8 +10,6 @@ public class Sniper : EnemyBase
     [SerializeField]
     private GameObject mBulletPrefab = null;
 
-    private GameObject mBullet = null;
-
     // Update is called once per frame
     protected override void Update()
     {
@@ -19,35 +17,27 @@ public class Sniper : EnemyBase
         if (mCanAttack)
         {
             // Do attack here
-            if (mAttackTime < Time.time && mBullet == null)
+            if (mAttackTime < Time.time && mTarget != null)
             {
                 // Create a bullet
-                mBullet = Instantiate(mBulletPrefab, mPistol.transform);
+                GameObject inst = Instantiate(mBulletPrefab, mPistol.transform);
 
+                Bullet bullet = inst.GetComponent<Bullet>();
+
+                if (bullet == null)
+                {
+                    Destroy(inst);
+                    mAttackTime = Time.time + mAttackDelay;
+                    return;
+                }
+
+                bullet.Init(mTarget, mAttackingSpeed, 3);
                 mAttackTime = Time.time + mAttackDelay;
             }
         }
         else
         {
             base.Move();
-        }
-
-        // If a bullet exists, move it towards the player
-        if (mBullet != null && mTarget != null)
-        {
-            mBullet.transform.position = Vector3.MoveTowards(mBullet.transform.position, mTarget.transform.position, mAttackingSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(mBullet.transform.position, mTarget.transform.position) < 0.25f)
-            {
-                mTarget.GetComponent<EnemyBase>().Attacked(1);
-
-                Destroy(mBullet);
-            }
-        }
-        // If the target has died but the bullet is still traveling destroy it
-        if (mBullet != null && mTarget == null)
-        {
-            Destroy(mBullet);
         }
     }
 }

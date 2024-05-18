@@ -281,6 +281,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SceneReset()
+    {
+        mScore = 5;
+        mEnemyBaseList = new List<EnemyBase>();
+        mPlayerList = new List<EnemyBase>();
+        SetUIText(mScore.ToString());
+        mInGame = false;
+    }
+
+    private void SetUIText(string text)
+    {
+        if (mUIScoreValue != null)
+            mUIScoreValue.text = text;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         switch (scene.name)
@@ -290,6 +305,9 @@ public class GameManager : MonoBehaviour
                 break;
             case "Sniper":
                 SpawnEnemies(mSniperPrefab, "Sniper");
+                break;
+            case "MainMenu":
+                SceneReset();
                 break;
             default:
                 break;

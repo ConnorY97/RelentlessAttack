@@ -407,7 +407,7 @@ MonoBehaviour:
   mAttackDistance: 4
   mAttackDelay: 4
   mEnemyDelayModifier: 2
-  mAttackingSpeed: 2
+  mAttackingSpeed: 0.5
   mEnemyAttackSpeedModifier: 0.5
   mUiHitPoints: {fileID: 2184194426548603846}
   mPistol: {fileID: 5074549915625447133}
