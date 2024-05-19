@@ -1,3 +1,4 @@
+using Codice.Client.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,8 +21,9 @@ public class Sniper : EnemyBase
             if (mAttackTime < Time.time && mTarget != null)
             {
                 // Create a bullet
-                GameObject inst = Instantiate(mBulletPrefab, mPistol.transform);
+                GameObject inst = Instantiate(mBulletPrefab, mPistol.transform, true);
 
+                inst.transform.position = mPistol.transform.position;
                 Bullet bullet = inst.GetComponent<Bullet>();
 
                 if (bullet == null)

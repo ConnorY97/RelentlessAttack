@@ -103,6 +103,14 @@ public class EnemyBase : MonoBehaviour
                     mMaterial.color = mIsEnemy ? Color.red : Color.green;
             }
         }
+
+        // Add modifers if it is an enemy
+        if (mIsEnemy)
+        {
+            mAttackingSpeed *= mEnemyAttackSpeedModifier;
+
+            mAttackDelay *= mEnemyDelayModifier;
+        }
     }
 
     protected GameObject FindClosestTarget(string tag, out bool canAttack)

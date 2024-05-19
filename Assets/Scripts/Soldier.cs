@@ -14,13 +14,6 @@ public class Soldier : EnemyBase
     public override void Init(int hitPoints, bool isEnemy, float speed)
     {
         base.Init(hitPoints, isEnemy, speed);
-
-        if (mIsEnemy)
-        {
-            mAttackingSpeed *= mEnemyAttackSpeedModifier;
-
-            mAttackDelay *= mEnemyDelayModifier;
-        }
     }
 
     protected override void Update()

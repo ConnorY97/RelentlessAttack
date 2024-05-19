@@ -405,10 +405,10 @@ MonoBehaviour:
   mSpeed: 10
   mTurnSpeed: 10
   mAttackDistance: 4
-  mAttackDelay: 4
+  mAttackDelay: 3
   mEnemyDelayModifier: 2
-  mAttackingSpeed: 0.5
-  mEnemyAttackSpeedModifier: 0.5
+  mAttackingSpeed: 5
+  mEnemyAttackSpeedModifier: 1
   mUiHitPoints: {fileID: 2184194426548603846}
   mPistol: {fileID: 5074549915625447133}
   mBulletPrefab: {fileID: 8418573230098955179, guid: 85df4eb55eb5abc418c40a2fe414dcbc, type: 3}
