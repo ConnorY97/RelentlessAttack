@@ -159,8 +159,11 @@ public class EnemyBase : MonoBehaviour
 
                 Destroy(gameObject);
 
-                if (mGameManager != null)
-                    mGameManager.IncrementScore(1);
+                if (mIsEnemy)
+                {
+                    if (mGameManager != null)
+                        mGameManager.IncrementScore(1);
+                }
             }
             else if (mUiHitPoints != null)
             {

@@ -21,4 +21,12 @@ public class ButtonScript : MonoBehaviour
             GameManager.Instance.SpawnSoldier();
         }
     }
+
+    public void SpawnSniper()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SpawnSniper();
+        }
+    }
 }

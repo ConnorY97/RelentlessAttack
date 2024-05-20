@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
 
         // Update the score when you purchase a soldier
         mScore -= 5;
-        mUIScoreValue.text = mScore.ToString();
+        SetUIText(mScore.ToString());
 
         // Check if you have enough to spawn another soldier
         if (mScore < 5)
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
 
         // Update the score when you purchase a soldier
         mScore -= 5;
-        mUIScoreValue.text = mScore.ToString();
+        SetUIText(mScore.ToString());
 
         // Check if you have enough to spawn another soldier
         if (mScore < 5)

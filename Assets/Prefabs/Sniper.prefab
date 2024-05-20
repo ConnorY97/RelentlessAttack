@@ -402,12 +402,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mIsEnemy: 1
   mHitPoints: 10
-  mSpeed: 10
+  mSpeed: 15
   mTurnSpeed: 10
   mAttackDistance: 4
-  mAttackDelay: 3
-  mEnemyDelayModifier: 2
-  mAttackingSpeed: 5
+  mAttackDelay: 0.5
+  mEnemyDelayModifier: 8
+  mAttackingSpeed: 0.25
   mEnemyAttackSpeedModifier: 1
   mUiHitPoints: {fileID: 2184194426548603846}
   mPistol: {fileID: 5074549915625447133}

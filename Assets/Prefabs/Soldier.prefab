@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mIsEnemy: 1
   mHitPoints: 10
-  mSpeed: 5
+  mSpeed: 10
   mTurnSpeed: 1
   mAttackDistance: 1
   mAttackDelay: 0.5
