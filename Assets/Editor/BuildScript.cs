@@ -38,7 +38,7 @@ public class Builder
     }
 
     // This function will be called from the build process
-    public static void Build()
+    public static void build()
     {
         // Build EmbeddedLinux ARM64 Unity player
         BuildEmbeddedLinux(EmbeddedLinuxArchitecture.Arm64);
