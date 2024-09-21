@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      submachine-gun_0: 206448765360632656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
