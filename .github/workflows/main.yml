@@ -1,26 +1,16 @@
-name: Build Action
+name: Testing on self hosted runner
+
 on:
+  workflow_dispatch:
+    {}
   push:
     branches:
-      - 'build'
+      [ "main" ]
 
 jobs:
-  test-runner:
-    name: Run Play Mode Tests
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        unityVersion:
-          - 2023.2.18f1
-        targetPlatform:
-          - WebGL
-        projectName:
-          - RelentlessAttack
-        projectPath:
-          - ./
-        testMode:
-          - playmode
+  testing:
+    Name: Run Tests
+    runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
       - name: Checkout repo
@@ -28,43 +18,41 @@ jobs:
         with:
           lfs: false
 
-      - name: Runnig tests
-        uses: game-ci/unity-test-runner@v4
-        id: tests
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
+      - name: Move to Unity DIR
+        uses: bash
+        run: |
+          cd ~
+          cd ~/Unity/Hub/Editor/2023.2.18f1/Editor
 
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.artifactsPath }}
+      - name: Test
+        uses: bash
+        run: |
+          ./Unity -runTests [-batchmode] -projectPath /home/connor/Documents/RelentlessAttack/ -testPlatform StandaloneLinux64 -testResults /home/connor/Documents/Results/testResults.xml -logfile /home/connor/Documents/Results/logRestults.txt
 
-#   build-webgl:
-# #    needs: test-runner
-#     name: Build for WebGL
+
+# name: Build Action
+# on:
+#   push:
+#     branches:
+#       - 'build'
+
+# jobs:
+#   test-runner:
+#     name: Run Play Mode Tests
 #     runs-on: ubuntu-latest
 #     strategy:
 #       fail-fast: false
 #       matrix:
 #         unityVersion:
-#           - 2022.3.6f1
+#           - 2023.2.18f1
 #         targetPlatform:
 #           - WebGL
 #         projectName:
 #           - RelentlessAttack
 #         projectPath:
 #           - ./
+#         testMode:
+#           - playmode
 
 #     steps:
 #       - name: Checkout repo
@@ -72,92 +60,136 @@ jobs:
 #         with:
 #           lfs: false
 
-#       - name: Caching
-#         uses: actions/cache@v4
-#         with:
-#           path: ./Library
-#           key: Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
-#           restore-keys: |
-#             Library-
-#             Library-${{matrix.projectName}}-
-#             Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
-
-#       - name: Unity Builder
-#         uses: game-ci/unity-builder@v4
+#       - name: Runnig tests
+#         uses: game-ci/unity-test-runner@v4
+#         id: tests
 #         env:
 #           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 #           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
 #           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 #         with:
+#           projectPath: ${{ matrix.projectPath }}
 #           unityVersion: ${{ matrix.unityVersion }}
-#           targetPlatform: ${{ matrix.targetPlatform }}
+#           testMode: ${{ matrix.testMode }}
+#           artifactsPath: ${{ matrix.testMode }}-artifacts
+#           githubToken: ${{ secrets.GITHUB_TOKEN }}
+#           checkName: ${{ matrix.testMode }} Test Results
 
-#       - name: Uploading the build
+#       - name: Upload Test Results
 #         uses: actions/upload-artifact@v4
+#         if: always()
 #         with:
-#           name: Build
-#           path: build
+#           name: Test results for ${{ matrix.testMode }}
+#           path: ${{ steps.tests.outputs.artifactsPath }}
 
-#   publish-to-itch:
-#     name: Publish  to Itch
-#     runs-on: ubuntu-latest
-#     needs: build-webgl
-#     steps:
-#     - name: Download Artifact
-#       uses: actions/download-artifact@v4
-#       with:
-#           name: Build
+# #   build-webgl:
+# # #    needs: test-runner
+# #     name: Build for WebGL
+# #     runs-on: ubuntu-latest
+# #     strategy:
+# #       fail-fast: false
+# #       matrix:
+# #         unityVersion:
+# #           - 2022.3.6f1
+# #         targetPlatform:
+# #           - WebGL
+# #         projectName:
+# #           - RelentlessAttack
+# #         projectPath:
+# #           - ./
 
-#     - name: Test Artifact Download
-#       run: ls -R
+# #     steps:
+# #       - name: Checkout repo
+# #         uses: actions/checkout@v4
+# #         with:
+# #           lfs: false
 
-#     - name: Uploading to itch.io
-#       uses: manleydev/butler-publish-itchio-action@master
-#       env:
-#         BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-#         CHANNEL: windows
-#         ITCH_GAME: RelentlessAttack
-#         ITCH_USER: ConnorY97
-#         PACKAGE: /home/runner/work/RelentlessAttack/RelentlessAttack/WebGL/WebGL/
+# #       - name: Caching
+# #         uses: actions/cache@v4
+# #         with:
+# #           path: ./Library
+# #           key: Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
+# #           restore-keys: |
+# #             Library-
+# #             Library-${{matrix.projectName}}-
+# #             Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
 
-  # Removing for the time being as there are space issues
-  # Might just have to run this from its own branch
-  # build-android:
-  #   needs: test-runner
-  #   name: Build for Android
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     fail-fast: false
+# #       - name: Unity Builder
+# #         uses: game-ci/unity-builder@v4
+# #         env:
+# #           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+# #           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+# #           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+# #         with:
+# #           unityVersion: ${{ matrix.unityVersion }}
+# #           targetPlatform: ${{ matrix.targetPlatform }}
 
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v4
-  #       with:
-  #         lfs: false
+# #       - name: Uploading the build
+# #         uses: actions/upload-artifact@v4
+# #         with:
+# #           name: Build
+# #           path: build
 
-  #     - name: Caching
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ./Library
-  #         key: Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
-  #         restore-keys: |
-  #           Library-
-  #           Library-${{matrix.projectName}}-
-  #           Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
+# #   publish-to-itch:
+# #     name: Publish  to Itch
+# #     runs-on: ubuntu-latest
+# #     needs: build-webgl
+# #     steps:
+# #     - name: Download Artifact
+# #       uses: actions/download-artifact@v4
+# #       with:
+# #           name: Build
 
-  #     - name: Unity Builder
-  #       uses: game-ci/unity-builder@v4
-  #       env:
-  #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-  #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-  #       with:
-  #         unityVersion: ${{ matrix.unityVersion }}
-  #         targetPlatform: Android
-  #         versioning: Semantic
+# #     - name: Test Artifact Download
+# #       run: ls -R
 
-  #     - name: Uploading the build
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: Build
-  #         path: build
+# #     - name: Uploading to itch.io
+# #       uses: manleydev/butler-publish-itchio-action@master
+# #       env:
+# #         BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+# #         CHANNEL: windows
+# #         ITCH_GAME: RelentlessAttack
+# #         ITCH_USER: ConnorY97
+# #         PACKAGE: /home/runner/work/RelentlessAttack/RelentlessAttack/WebGL/WebGL/
+
+#   # Removing for the time being as there are space issues
+#   # Might just have to run this from its own branch
+#   # build-android:
+#   #   needs: test-runner
+#   #   name: Build for Android
+#   #   runs-on: ubuntu-latest
+#   #   strategy:
+#   #     fail-fast: false
+
+#   #   steps:
+#   #     - name: Checkout repo
+#   #       uses: actions/checkout@v4
+#   #       with:
+#   #         lfs: false
+
+#   #     - name: Caching
+#   #       uses: actions/cache@v4
+#   #       with:
+#   #         path: ./Library
+#   #         key: Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
+#   #         restore-keys: |
+#   #           Library-
+#   #           Library-${{matrix.projectName}}-
+#   #           Library-${{matrix.projectName}}-${{matrix.targetPlatform}}
+
+#   #     - name: Unity Builder
+#   #       uses: game-ci/unity-builder@v4
+#   #       env:
+#   #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#   #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+#   #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+#   #       with:
+#   #         unityVersion: ${{ matrix.unityVersion }}
+#   #         targetPlatform: Android
+#   #         versioning: Semantic
+
+#   #     - name: Uploading the build
+#   #       uses: actions/upload-artifact@v4
+#   #       with:
+#   #         name: Build
+#   #         path: build

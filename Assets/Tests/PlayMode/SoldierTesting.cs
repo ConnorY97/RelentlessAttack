@@ -18,7 +18,7 @@ public class SoldierTesting
         GameObject targetObject = new GameObject();
         targetObject.transform.position = new Vector3(10, 0, 0); // Set target position
         targetObject.tag = "Player";
-        yield return new WaitForSeconds(2.0f); // Wait for one frame to update movement
+        yield return new WaitForSeconds(5.0f); // Wait for one frame to update movement
 
         float distance = Vector3.Distance(targetObject.transform.position, mGameObject.transform.position);
 
