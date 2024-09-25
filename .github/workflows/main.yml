@@ -9,7 +9,7 @@ on:
 
 jobs:
   testing:
-    Name: Run Tests
+    name: Run Tests
     runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
@@ -19,13 +19,13 @@ jobs:
           lfs: false
 
       - name: Move to Unity DIR
-        uses: bash
+        shell: bash
         run: |
           cd ~
           cd ~/Unity/Hub/Editor/2023.2.18f1/Editor
 
       - name: Test
-        uses: bash
+        shell: bash
         run: |
           ./Unity -runTests [-batchmode] -projectPath /home/connor/Documents/RelentlessAttack/ -testPlatform StandaloneLinux64 -testResults /home/connor/Documents/Results/testResults.xml -logfile /home/connor/Documents/Results/logRestults.txt
 
