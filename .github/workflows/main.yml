@@ -18,16 +18,10 @@ jobs:
         with:
           lfs: false
 
-      - name: Move to Unity DIR
-        shell: bash
-        run: |
-          cd ~
-          cd ~/Unity/Hub/Editor/2023.2.18f1/Editor
-
       - name: Test
         shell: bash
         run: |
-          ./Unity -runTests [-batchmode] -projectPath /home/connor/Documents/RelentlessAttack/ -testPlatform StandaloneLinux64 -testResults /home/connor/Documents/Results/testResults.xml -logfile /home/connor/Documents/Results/logRestults.txt
+          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] -projectPath /home/connor/Documents/RelentlessAttack/ -testPlatform StandaloneLinux64 -testResults /home/connor/Documents/Results/testResults.xml -logfile /home/connor/Documents/Results/logRestults.txt
 
 
 # name: Build Action
