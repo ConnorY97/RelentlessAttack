@@ -23,14 +23,15 @@ jobs:
         run: |
           ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] -projectPath /home/connor/Documents/RelentlessAttack/ -testPlatform StandaloneLinux64 -testResults /home/connor/Documents/Results/testResults.xml -logfile /home/connor/Documents/Results/logRestults.txt
 
-      - name: Post test results
+      - name: Convert test results
+        if: success()
         shell: bash
         run: |
           python3 ./scripts/ConvertResult.py -xml_file "/home/connor/Documents/Results/testResult.xml"
 
       - name: Publish CTRF Test Summary Results
-        run: npx github-actions-ctrf ./scripts/result.json
         if: success()
+        run: npx github-actions-ctrf "/home/connor/Documents/Results/result.json
 
 
 # name: Build Action
