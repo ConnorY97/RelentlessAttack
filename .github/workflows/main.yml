@@ -35,7 +35,7 @@ jobs:
         if: success()
         shell: bash
         run: |
-          python3 ./scripts/ConvertResult.py "/home/connor/Documents/Results/testResult.xml"
+          python3 ./scripts/ConvertResult.py "/home/connor/Documents/Results/testResults.xml"
 
       - name: Publish CTRF Test Summary Results
         if: success()
