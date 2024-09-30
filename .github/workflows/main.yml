@@ -39,7 +39,7 @@ jobs:
 
       - name: Publish CTRF Test Summary Results
         if: success()
-        run: npx github-actions-ctrf "/home/connor/Documents/Results/result.json
+        run: npx github-actions-ctrf "/home/connor/Documents/Results/result.json"
 
 
 # name: Build Action
