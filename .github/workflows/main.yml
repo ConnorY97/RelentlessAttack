@@ -54,7 +54,7 @@ jobs:
         run: |
           rm /home/connor/Documents/Results/testResults.xml \
           rm /home/connor/Documents/Results/logRestults.txt
-          rm /home/connor/Documents/Results/logRestults.txt
+          rm /home/connor/Documents/Results/result.json
 
 
 
