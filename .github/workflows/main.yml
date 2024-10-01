@@ -41,6 +41,13 @@ jobs:
         if: success()
         run: npx github-actions-ctrf "/home/connor/Documents/Results/result.json"
 
+      - name: Clean up
+        if: always()
+        shell: bash
+        run: |
+          rmdir /home/connor/Documents/Results/testResults.xml \
+          rmdir /home/connor/Documents/Results/logRestults.txt
+
 
 # name: Build Action
 # on:
