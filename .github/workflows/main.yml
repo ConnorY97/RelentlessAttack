@@ -23,7 +23,7 @@ jobs:
         run: |
           set +e  # Allow the script to continue on non-zero exit codes
           trap '' SIGSEGV  # Suppress segmentation fault errors
-          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] \
+          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests -batchmode \
             -projectPath /home/connor/Documents/RelentlessAttack/ \
             -testPlatform StandaloneLinux64 \
             -testResults /home/connor/Documents/Results/testResults.xml \
