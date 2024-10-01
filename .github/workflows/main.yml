@@ -49,13 +49,18 @@ jobs:
           path: /home/connor/Documents/Results/logRestults.txt
 
       - name: Clean up
-        if: always()
+        if: steps.test_step.outcome == 'success'  # Only run if the test step was successful
         shell: bash
         run: |
-          rm /home/connor/Documents/Results/testResults.xml \
-          rm /home/connor/Documents/Results/logRestults.txt \
-          rm /home/connor/Documents/Results/result.json
-
+          if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then
+              rm "/home/connor/Documents/Results/testResults.xml"
+          fi
+          if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
+              rm "/home/connor/Documents/Results/logRestults.txt"
+          fi
+          if [ -f "/home/connor/Documents/Results/result.json"]; then
+              rm "/home/connor/Documents/Results/result.json"
+          fi
 
 
 # name: Build Action
