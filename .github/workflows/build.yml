@@ -22,7 +22,7 @@ jobs:
           ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity \
           -quit -batchmode -nographics -buildTarget \
           EmbeddedLinux -executeMethod Builder.Build \
-          -projectPath /home/connor/Documents/RelentlessAttack/ \
+          -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
           -logfile /home/connor/Documents/Results/buildLog.txt
 
       - name: Post Log on Fail
