@@ -46,7 +46,7 @@ jobs:
           path: /home/connor/Documents/Results/logRestults.txt
 
       - name: Clean up
-        if: steps.test_step.outcome == 'success'  # Only run if the test step was successful
+        if: always()
         shell: bash
         run: |
           if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then

@@ -10,15 +10,31 @@ jobs:
     runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
-        - name: Checkout repo
-          uses: actions/checkout@v4
-          with:
-            lfs: false
+      - name: Checkout repo
+        id: build_step
+        uses: actions/checkout@v4
+        with:
+          lfs: false
 
-        - name: Build
-          shell: bash
-          run: |
-            ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity \
-            -quit -batchmode -nographics -buildTarget \
-            EmbeddedLinux -executeMethod Builder.Build \
-            -projectPath /home/connor/Documents/RelentlessAttack/
+      - name: Build
+        shell: bash
+        run: |
+          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity \
+          -quit -batchmode -nographics -buildTarget \
+          EmbeddedLinux -executeMethod Builder.Build \
+          -projectPath /home/connor/Documents/RelentlessAttack/ \
+          -logfile /home/connor/Documents/Results/buildLog.txt
+
+      - name: Post Log on Fail
+        if: steps.build_step.outcome == 'failure'  # Only run if the test step failed
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestLogs
+          path: /home/connor/Documents/Results/buildLog.txt
+
+    #   - name: Post Build on Success
+    #     if: steps.build_step.outcome == 'success'
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #         name: Build
+    #         path:
