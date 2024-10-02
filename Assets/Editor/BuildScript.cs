@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Builder
 {
-    public static void MyBuild()
+    // This function will be called from the build process
+    public static void Build()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.scenes = new[] {
@@ -28,12 +29,5 @@ public class Builder
         {
             Debug.Log("Build failed");
         }
-    }
-
-    // This function will be called from the build process
-    public static void Build()
-    {
-        // Build EmbeddedLinux ARM64 Unity player
-        MyBuild();
     }
 }
