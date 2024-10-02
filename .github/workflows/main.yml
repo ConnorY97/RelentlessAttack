@@ -3,9 +3,6 @@ name: Testing on self hosted runner
 on:
   workflow_dispatch:
     {}
-  push:
-    branches:
-      [ "main" ]
 
 jobs:
   testing:
@@ -58,7 +55,7 @@ jobs:
           if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
               rm "/home/connor/Documents/Results/logRestults.txt"
           fi
-          if [ -f "/home/connor/Documents/Results/result.json"]; then
+          if [ -f "/home/connor/Documents/Results/result.json" ]; then
               rm "/home/connor/Documents/Results/result.json"
           fi
 
