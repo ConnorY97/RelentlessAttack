@@ -32,9 +32,9 @@ jobs:
           name: TestLogs
           path: /home/connor/Documents/Results/buildLog.txt
 
-    #   - name: Post Build on Success
-    #     if: steps.build_step.outcome == 'success'
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #         name: Build
-    #         path:
+      # - name: Post Build on Success
+      #   if: steps.build_step.outcome == 'success'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #       name: Build
+      #       path: ./BuildOutput/

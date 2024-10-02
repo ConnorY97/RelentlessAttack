@@ -12,8 +12,8 @@ public class Builder
                 "Assets/Scenes/Soldier.unity",
                 "Assets/Scenes/Sniper.unity",
             };
-        buildPlayerOptions.locationPathName = "../BuildOutput/RelentlessAttack.exe";
-        buildPlayerOptions.target = BuildTarget.StandaloneLinux64;
+        buildPlayerOptions.locationPathName = "/home/connor/Documents/Results/";
+        buildPlayerOptions.target = BuildTarget.WebGL;
         buildPlayerOptions.options = BuildOptions.None;
 
         BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
