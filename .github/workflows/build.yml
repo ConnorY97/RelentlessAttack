@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repo
-        id: build_step
         uses: actions/checkout@v4
         with:
           lfs: false
 
       - name: Build
+        id: build_step
         shell: bash
         run: |
           ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity \
