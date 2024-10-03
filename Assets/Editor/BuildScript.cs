@@ -13,7 +13,7 @@ public class Builder
                 "Assets/Scenes/Soldier.unity",
                 "Assets/Scenes/Sniper.unity",
             };
-        buildPlayerOptions.locationPathName = "/home/connor/Documents/Results/";
+        buildPlayerOptions.locationPathName = "/home/connor/Documents/Results/BuildOutput/";
         buildPlayerOptions.target = BuildTarget.WebGL;
         buildPlayerOptions.options = BuildOptions.None;
 

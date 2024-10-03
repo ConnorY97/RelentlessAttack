@@ -19,9 +19,9 @@ jobs:
         id: build_step
         shell: bash
         run: |
-          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity \
-          -quit -batchmode -nographics -buildTarget \
-          EmbeddedLinux -executeMethod Builder.Build \
+          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity                                                                 \
+          -quit -batchmode -nographics                                                                                \
+          -executeMethod Builder.Build                                                                                \
           -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
           -logfile /home/connor/Documents/Results/buildLog.txt
 
@@ -32,9 +32,9 @@ jobs:
           name: TestLogs
           path: /home/connor/Documents/Results/buildLog.txt
 
-      # - name: Post Build on Success
-      #   if: steps.build_step.outcome == 'success'
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #       name: Build
-      #       path: ./BuildOutput/
+      - name: Post Build on Success
+        if: steps.build_step.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+            name: Build
+            path: /home/connor/Documents/Results/BuildOutput
