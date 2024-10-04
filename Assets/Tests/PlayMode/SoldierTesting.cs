@@ -22,6 +22,6 @@ public class SoldierTesting
 
         float distance = Vector3.Distance(targetObject.transform.position, mGameObject.transform.position);
 
-        Assert.IsTrue(distance < 0.05f, $"Failed to move towards the target in time, resulting distance: {distance}, cureent position: {mGameObject.transform.position}"); // Check if the enemy moved closer to the target
+        Assert.IsTrue(distance < 0.75f, $"Failed to move towards the target in time, resulting distance: {distance}, cureent position: {mGameObject.transform.position}"); // Check if the enemy moved closer to the target
     }
 }

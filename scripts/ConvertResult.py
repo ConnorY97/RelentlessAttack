@@ -78,11 +78,11 @@ def xml_to_json(xml_file, output_json):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert XML test results to JSON.")
     parser.add_argument("xml_file", help="The input XML file containing test results.")
-    parser.add_argument("output_json", help="The output JSON file to save the converted results.")
     args = parser.parse_args()
 
+    output_json = "/home/connor/Documents/Results/result.json"
     try:
-        xml_to_json(args.xml_file, args.output_json)
+        xml_to_json(args.xml_file, output_json)
         print(f"Conversion completed. JSON saved to {args.output_json}.")
     except Exception as e:
         traceback.print_exc()

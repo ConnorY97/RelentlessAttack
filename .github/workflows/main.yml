@@ -22,11 +22,10 @@ jobs:
           set +e  # Allow the script to continue on non-zero exit codes
           trap '' SIGSEGV  # Suppress segmentation fault errors
           ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] \
-            -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
-            -testPlatform StandaloneLinux64 \
-            -testResults /home/connor/Documents/Results/testResults.xml \
-            -logfile /home/connor/Documents/Results/logRestults.txt \
-            >/dev/null 2>&1 || true  # Ignore the segmentation fault and continue
+          -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
+          -testResults /home/connor/Documents/Results/testResults.xml \
+          -logfile /home/connor/Documents/Results/logRestults.txt \
+          >/dev/null 2>&1 || true  # Ignore the segmentation fault and continue
 
       - name: Convert test results
         if: steps.test_step.outcome == 'success'  # Only run if the test step was successful
@@ -45,19 +44,19 @@ jobs:
           name: TestLogs
           path: /home/connor/Documents/Results/logRestults.txt
 
-      - name: Clean up
-        if: always()
-        shell: bash
-        run: |
-          if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then
-              rm "/home/connor/Documents/Results/testResults.xml"
-          fi
-          if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
-              rm "/home/connor/Documents/Results/logRestults.txt"
-          fi
-          if [ -f "/home/connor/Documents/Results/result.json" ]; then
-              rm "/home/connor/Documents/Results/result.json"
-          fi
+      # - name: Clean up
+      #   if: always()
+      #   shell: bash
+      #   run: |
+      #     if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then
+      #         rm "/home/connor/Documents/Results/testResults.xml"
+      #     fi
+      #     if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
+      #         rm "/home/connor/Documents/Results/logRestults.txt"
+      #     fi
+      #     if [ -f "/home/connor/Documents/Results/result.json" ]; then
+      #         rm "/home/connor/Documents/Results/result.json"
+      #     fi
 
 
 # name: Build Action
