@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import traceback
 import re
 
+#region Old
 # def xml_to_json(xml_file, tool_name):
 #     # Check if the file exists
 #     if not os.path.exists(xml_file):
@@ -95,7 +96,7 @@ import re
 #     }
 #     print(json_structure)
 #     return json_structure
-
+#endregion
 def xml_to_json(xml_file, tool_name):
     # Check if the file exists
     if not os.path.exists(xml_file):
