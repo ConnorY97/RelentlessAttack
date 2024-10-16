@@ -45,19 +45,19 @@ jobs:
           name: TestLogs
           path: /home/connor/Documents/Results/logRestults.txt
 
-      - name: Clean up
-        if: always()
-        shell: bash
-        run: |
-          if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then
-              rm "/home/connor/Documents/Results/testResults.xml"
-          fi
-          if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
-              rm "/home/connor/Documents/Results/logRestults.txt"
-          fi
-          if [ -f "/home/connor/Documents/Results/result.json" ]; then
-              rm "/home/connor/Documents/Results/result.json"
-          fi
+      # - name: Clean up
+      #   if: always()
+      #   shell: bash
+      #   run: |
+      #     if [ -f "/home/connor/Documents/Results/testResults.xml" ]; then
+      #         rm "/home/connor/Documents/Results/testResults.xml"
+      #     fi
+      #     if [ -f "/home/connor/Documents/Results/logRestults.txt" ]; then
+      #         rm "/home/connor/Documents/Results/logRestults.txt"
+      #     fi
+      #     if [ -f "/home/connor/Documents/Results/result.json" ]; then
+      #         rm "/home/connor/Documents/Results/result.json"
+      #     fi
 
 
 # name: Build Action
