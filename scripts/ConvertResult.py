@@ -21,9 +21,27 @@ def convert_xml_to_json(xml_file_path, output_file_path):
         start_time = root.attrib.get('start-time', None)
         end_time = root.attrib.get('end-time', None)
 
+        # Debug output for start and end time
+        print(f"Start time: {start_time}")
+        print(f"End time: {end_time}")
+
         # Convert times to timestamps (assuming ISO 8601 format)
-        start_timestamp = int(datetime.fromisoformat(start_time.replace('Z', '')).timestamp()) if start_time else 0
-        end_timestamp = int(datetime.fromisoformat(end_time.replace('Z', '')).timestamp()) if end_time else 0
+        def safe_fromisoformat(dt_str):
+            if dt_str == '0001-01-01 00:00:00Z':
+                print("Detected invalid timestamp, returning default value.")
+                return 0  # or you could use int(datetime.now().timestamp())
+            try:
+                return int(datetime.fromisoformat(dt_str.replace('Z', '')).timestamp())
+            except ValueError as ve:
+                print(f"ValueError: {ve} for input: {dt_str}")
+                return 0  # Return 0 or some default value if conversion fails
+            except TypeError as te:
+                print(f"TypeError: {te} for input: {dt_str}")
+                return 0  # Return 0 or some default value if conversion fails
+
+        start_timestamp = safe_fromisoformat(start_time) if start_time else 0
+        end_timestamp = safe_fromisoformat(end_time) if end_time else 0
+
 
         # Prepare summary section
         summary = {
@@ -80,8 +98,8 @@ def convert_xml_to_json(xml_file_path, output_file_path):
         final_output = {
             "results": {
                 "tool": {
-                    "name": "playwright",  # Modify based on your context
-                    "version": "1.27.0"  # Modify based on your context
+                    "name": "RelentlessAttack",  # Modify based on your context
+                    "version": "0.1"  # Modify based on your context
                 },
                 "summary": summary,
                 "tests": tests
