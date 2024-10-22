@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 105
+  controlID: 71
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 51
+  controlID: 49
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 344
     width: 407.2
     height: 378.8
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -244,8 +244,8 @@ MonoBehaviour:
     y: 0
     width: 140.79999
     height: 722.8
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 106
+  controlID: 109
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,8 +295,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 386.4
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 18}
@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 386.4
     width: 372
     height: 336.4
-  m_MinSize: {x: 51, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 20}
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 363
+    y: 417.6
     width: 406.2
     height: 357.8
   m_SerializedDataModeController:
@@ -424,7 +424,7 @@ MonoBehaviour:
       height: 2547.143
     m_MinimalGUI: 1
   m_defaultScale: 0.13222657
-  m_LastWindowPixelSize: {x: 406.2, y: 357.8}
+  m_LastWindowPixelSize: {x: 507.75, y: 447.25}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 19
+    y: 73.6
     width: 406.2
     height: 323
   m_SerializedDataModeController:
@@ -494,7 +494,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3a8a0000
     m_LastClickedID: 35386
-    m_ExpandedIDs: 00000000c08b0000c28b0000c48b0000c68b0000c88b0000ca8b0000cc8b0000
+    m_ExpandedIDs: 00000000c08b0000c28b0000c48b0000c68b0000c88b0000ca8b0000cc8b0000ce8b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,10 +520,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 155}
+    scrollPos: {x: 0, y: 171}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c08b0000c28b0000c48b0000c68b0000c88b0000ca8b0000cc8b0000
+    m_ExpandedIDs: ffffffff00000000c08b0000c28b0000c48b0000c68b0000c88b0000ca8b0000cc8b0000ce8b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -602,8 +602,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 408.2
-    y: 19
+    x: 407.2
+    y: 73.6
     width: 614
     height: 701.8
   m_SerializedDataModeController:
@@ -1266,9 +1266,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1024.2
-    y: 19
-    width: 138.80005
+    x: 1023.2
+    y: 73.6
+    width: 138.79999
     height: 701.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d2f0ffff1cf1fffffcf2ffff62f3ffffacf3ffff50f5ffffd8f6ffff22f7fffffef8ffffd0faffff
+      m_ExpandedIDs: eef5ffff38f6fffffef7ffffd0faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1368,8 +1368,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 19
+    x: 1164
+    y: 73.6
     width: 371
     height: 365.4
   m_SerializedDataModeController:
@@ -1453,8 +1453,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Test Runner\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 405.4
+    x: 1164
+    y: 460
     width: 371
     height: 315.4
   m_SerializedDataModeController:
@@ -1469,7 +1469,7 @@ MonoBehaviour:
     m_ContainerData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 183
+    ID: 141
     splitterInitialOffset: 218.40001
     currentActiveSplitter: -1
     realSizes:
@@ -1501,7 +1501,7 @@ MonoBehaviour:
       name: RelentlessAttack
       fullName: RelentlessAttack
       resultStatus: 1
-      duration: 10.043883
+      duration: 7.4334006
       messages: 
       output: 
       stacktrace: 
@@ -1517,7 +1517,7 @@ MonoBehaviour:
       name: PlayMode.dll
       fullName: F:/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll
       resultStatus: 1
-      duration: 10.005466
+      duration: 7.393374
       messages: 
       output: 
       stacktrace: 
@@ -1533,7 +1533,7 @@ MonoBehaviour:
       name: BulletTesting
       fullName: BulletTesting
       resultStatus: 1
-      duration: 2.1098704
+      duration: 2.1106462
       messages: 
       output: 
       stacktrace: 
@@ -1549,7 +1549,7 @@ MonoBehaviour:
       name: BulletTestingWithEnumeratorPasses
       fullName: BulletTesting.BulletTestingWithEnumeratorPasses
       resultStatus: 1
-      duration: 2.0759754
+      duration: 2.0689683
       messages: 
       output: 
       stacktrace: 
@@ -1566,7 +1566,7 @@ MonoBehaviour:
       name: EnemyBaseTesting
       fullName: EnemyBaseTesting
       resultStatus: 1
-      duration: 0.095822
+      duration: 0.0903023
       messages: 
       output: 
       stacktrace: 
@@ -1582,7 +1582,7 @@ MonoBehaviour:
       name: AInit_Test
       fullName: EnemyBaseTesting.AInit_Test
       resultStatus: 1
-      duration: 0.0380165
+      duration: 0.038357
       messages: 
       output: 
       stacktrace: 
@@ -1598,7 +1598,7 @@ MonoBehaviour:
       name: AInit_Test(10,True,10)
       fullName: EnemyBaseTesting.AInit_Test(10,True,10)
       resultStatus: 1
-      duration: 0.0193269
+      duration: 0.0200895
       messages: 
       output: 
       stacktrace: 
@@ -1615,7 +1615,7 @@ MonoBehaviour:
       name: AInit_Test(28,True,100)
       fullName: EnemyBaseTesting.AInit_Test(28,True,100)
       resultStatus: 1
-      duration: 0.0005889
+      duration: 0.0032146
       messages: 
       output: 
       stacktrace: 
@@ -1632,7 +1632,7 @@ MonoBehaviour:
       name: AInit_Test(1,False,1)
       fullName: EnemyBaseTesting.AInit_Test(1,False,1)
       resultStatus: 1
-      duration: 0.0004756
+      duration: 0.0009025
       messages: 
       output: 
       stacktrace: 
@@ -1649,7 +1649,7 @@ MonoBehaviour:
       name: BAttacked_Test
       fullName: EnemyBaseTesting.BAttacked_Test
       resultStatus: 1
-      duration: 0.0259441
+      duration: 0.0228343
       messages: 
       output: 
       stacktrace: 
@@ -1665,7 +1665,7 @@ MonoBehaviour:
       name: BAttacked_Test(10)
       fullName: EnemyBaseTesting.BAttacked_Test(10)
       resultStatus: 1
-      duration: 0.0015199
+      duration: 0.0014236
       messages: 
       output: 
       stacktrace: 
@@ -1682,7 +1682,7 @@ MonoBehaviour:
       name: BAttacked_Test(-50)
       fullName: EnemyBaseTesting.BAttacked_Test(-50)
       resultStatus: 1
-      duration: 0.0005403
+      duration: 0.0002929
       messages: 
       output: 
       stacktrace: 
@@ -1695,49 +1695,11 @@ MonoBehaviour:
       parentId: 1008
       parentUniqueId: 'PlayMode.dll/EnemyBaseTesting/[PlayMode][EnemyBaseTesting.BAttacked_Test][suite]'
     - id: 1009
-      uniqueId: 'PlayMode.dll/[PlayMode][GameManagerTesting][suite]'
-      name: GameManagerTesting
-      fullName: GameManagerTesting
-      resultStatus: 1
-      duration: 2.6056328
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1016
-      parentUniqueId: '[PlayMode][C:/Users/c_you/Documents/PersonalProjects/RelentlessAttack/Library/ScriptAssemblies/PlayMode.dll][suite]'
-    - id: 1010
-      uniqueId: 'PlayMode.dll/GameManagerTesting/[PlayMode][GameManagerTesting.ASoldierSetup_Test]'
-      name: ASoldierSetup_Test
-      fullName: GameManagerTesting.ASoldierSetup_Test
-      resultStatus: 1
-      duration: 2.583448
-      messages: 
-      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
-        This is not allowed.  MonoBehaviours can only be added using AddComponent().
-        Alternatively, your script can inherit from ScriptableObject or no base class
-        at all
-
-'
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1009
-      parentUniqueId: 'PlayMode.dll/[PlayMode][GameManagerTesting][suite]'
-    - id: 1009
       uniqueId: 'PlayMode.dll/[PlayMode][SniperTesting][suite]'
       name: SniperTesting
       fullName: SniperTesting
       resultStatus: 1
-      duration: 0.1056821
+      duration: 0.1072345
       messages: 
       output: 
       stacktrace: 
@@ -1753,7 +1715,7 @@ MonoBehaviour:
       name: SniperTestingSimplePasses
       fullName: SniperTesting.SniperTestingSimplePasses
       resultStatus: 1
-      duration: 0.0004479
+      duration: 0.0013895
       messages: 
       output: 
       stacktrace: 
@@ -1770,7 +1732,7 @@ MonoBehaviour:
       name: SniperTestingWithEnumeratorPasses
       fullName: SniperTesting.SniperTestingWithEnumeratorPasses
       resultStatus: 1
-      duration: 0.0701995
+      duration: 0.0864359
       messages: 
       output: 
       stacktrace: 
@@ -1787,7 +1749,7 @@ MonoBehaviour:
       name: SoldierTesting
       fullName: SoldierTesting
       resultStatus: 1
-      duration: 5.0731063
+      duration: 5.0702796
       messages: 
       output: 
       stacktrace: 
@@ -1803,7 +1765,7 @@ MonoBehaviour:
       name: ASoldierMovement_Test
       fullName: SoldierTesting.ASoldierMovement_Test
       resultStatus: 1
-      duration: 5.047244
+      duration: 5.0484123
       messages: 
       output: 
       stacktrace: 
@@ -1815,10 +1777,10 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1012
       parentUniqueId: 'PlayMode.dll/[PlayMode][SoldierTesting][suite]'
-    m_ResultText: ASoldierMovement_Test (5.047s)
+    m_ResultText: ASoldierMovement_Test (5.048s)
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 41.500122}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 55fbf293
       m_LastClickedID: -1812792491
       m_ExpandedIDs: 8008d3963aea259aa207fceeed2e6808cdd26923fefeb925bbc9d6292ad0702dd5a012529a73186600189e71ffffff7f
