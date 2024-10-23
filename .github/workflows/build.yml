@@ -5,7 +5,7 @@ on:
     {}
 
 jobs:
-  testing:
+  Build:
     name: Build  and post project
     runs-on: self-hosted  # Use the self-hosted runner
 
@@ -32,9 +32,21 @@ jobs:
           name: TestLogs
           path: /home/connor/Documents/Results/buildLog.txt
 
-      - name: Post Build on Success
-        if: steps.build_step.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-            name: Build
-            path: /home/connor/Documents/Results/BuildOutput
+  publish-to-itch:
+    name: Publish to Itch
+    runs-on: self-hosted
+    needs: Build
+    steps:
+    - name: Zip build
+      shell: bash
+      run: |
+        zip -r /home/connor/Documents/ResultsWebGLBuild.zip /home/connor/Documents/Results/BuildOutput
+
+    - name: Uploading to itch.io
+      uses: KikimoraGames/itch-publish@v0.0.3
+      with:
+        butlerApiKey: ${{ secrets.BUTLER_CREDENTIALS }}
+        gameData: /home/connor/Documents/ResultsWebGLBuild.zip
+        itchUsername: connory97
+        itchGameId: RelentlessAttack
+        buildChannel: windows
