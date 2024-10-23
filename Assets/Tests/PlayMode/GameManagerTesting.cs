@@ -9,16 +9,39 @@ public class GameManagerTesting
 {
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.
-    //[UnityTest]
-    //public IEnumerator ASoldierSetup_Test()
-    //{
-    //    //GameObject mGameObject = new GameObject();
-    //    //GameManager mGameManager = new GameManager();
+    [UnityTest]
+    public IEnumerator ASoldierSceneSetup()
+    {
+        string mTargetScene = "Soldier";
 
-    //    //SceneManager.LoadScene("Soldier");
+        GameManager mGameManager = new GameManager();
 
-    //    //yield return new WaitForSeconds(2);
+        Assert.IsFalse(mGameManager != null, "Failed to create mGameManager");
 
-    //    //Assert.IsTrue(mGameManager.SetUpGameScene(), "Failed to set up the scene correctly");
-    //}
+        SceneManager.LoadScene(mTargetScene);
+
+        Debug.Log($"Loaded {mTargetScene}");
+
+        yield return new WaitForSeconds(2);
+
+        Assert.IsTrue(mGameManager.SetUpGameScene(), "Failed to set up the scene correctly");
+    }
+
+    [UnityTest]
+    public IEnumerator ASniperSceneSetUp()
+    {
+        string mTargetScene = "Sniper";
+
+        GameManager mGameManager = new GameManager();
+
+        Assert.IsFalse(mGameManager != null, "Failed to create mGameManager");
+
+        SceneManager.LoadScene(mTargetScene);
+
+        Debug.Log($"Loaded {mTargetScene}");
+
+        yield return new WaitForSeconds(2);
+
+        Assert.IsTrue(mGameManager.SetUpGameScene(), "Failed to set up the scene correctly");
+    }
 }
