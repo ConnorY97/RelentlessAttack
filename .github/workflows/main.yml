@@ -47,7 +47,7 @@ jobs:
         with:
           name: TestLogs
           path: /home/connor/Documents/Results/logRestults.txt
-
+# Trigger build
       # - name: Clean up
       #   if: always()
       #   shell: bash
