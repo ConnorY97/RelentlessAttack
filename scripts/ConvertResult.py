@@ -83,5 +83,10 @@ if __name__ == "__main__":
     parser.add_argument("output_file", help="Path to the output JSON file.")
     args = parser.parse_args()
 
-    convert_xml_to_json(args.xml_file, args.output_file)
+    # Ensure the output directories exist
+    json_output_file  = "/home/connor/Documents/Results/result.json"
 
+    os.makedirs(os.path.dirname(json_output_file), exist_ok=True)
+    print("Created file")
+
+    convert_xml_to_json(args.xml_file, json_output_file)
