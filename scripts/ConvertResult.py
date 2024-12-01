@@ -80,7 +80,6 @@ def convert_xml_to_json(xml_file_path, output_file_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert XML test results to JSON.")
     parser.add_argument("xml_file", help="Path to the input XML file.")
-    parser.add_argument("output_file", help="Path to the output JSON file.")
     args = parser.parse_args()
 
     # Ensure the output directories exist
