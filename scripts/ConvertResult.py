@@ -85,7 +85,7 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             }
             tests.append(test_entry)
 
-        stop_timestamp = start_time + int(total_duration)
+        stop_timestamp = start_timestamp + int(total_duration)
         print(f"Final stop after adding duration {stop_timestamp}")
         # Summary Section
         summary = {
