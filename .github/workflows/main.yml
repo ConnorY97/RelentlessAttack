@@ -18,17 +18,17 @@ jobs:
         with:
           lfs: false
 
-      # - name: Test
-      #   shell: bash
-      #   run: |
-      #     set +e  # Allow the script to continue on non-zero exit codes
-      #     trap '' SIGSEGV  # Suppress segmentation fault errors
-      #     ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] \
-      #       -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
-      #       -testPlatform StandaloneLinux64 \
-      #       -testResults /home/connor/Documents/Results/testResults.xml \
-      #       -logfile /home/connor/Documents/Results/logRestults.txt \
-      #       >/dev/null 2>&1 || true  # Ignore the segmentation fault and continue
+      - name: Test
+        shell: bash
+        run: |
+          set +e  # Allow the script to continue on non-zero exit codes
+          trap '' SIGSEGV  # Suppress segmentation fault errors
+          ~/Unity/Hub/Editor/2023.2.18f1/Editor/Unity -runTests [-batchmode] \
+            -projectPath /home/connor/Documents/Runners/RelentlessAttackRunner/_work/RelentlessAttack/RelentlessAttack/ \
+            -testPlatform StandaloneLinux64 \
+            -testResults /home/connor/Documents/Results/testResults.xml \
+            -logfile /home/connor/Documents/Results/logRestults.txt \
+            >/dev/null 2>&1 || true  # Ignore the segmentation fault and continue
 
       - name: Convert test results
         if: success()

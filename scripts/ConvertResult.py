@@ -32,10 +32,6 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             end_time = "0001-01-01 00:00:00Z"
 
         start_timestamp = to_unix_timestamp(start_time)
-        stop_timestamp = to_unix_timestamp(end_time)
-
-        print(f"Start time {start_timestamp}")
-        print(f"Stop time {stop_timestamp}")
 
         # General Information
         total_tests = int(root.attrib.get('total', 0))
@@ -86,7 +82,7 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             tests.append(test_entry)
 
         stop_timestamp = start_timestamp + int(total_duration)
-        print(f"Final stop after adding duration {stop_timestamp}")
+
         # Summary Section
         summary = {
             "tests": total_tests,
