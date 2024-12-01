@@ -72,7 +72,7 @@ def convert_xml_to_json(xml_file_path, output_file_path):
                 "screenshot": None  # Screenshots not available in XML
             }
             tests.append(test_entry)
-
+        print(f"Finaly total duration {total_duration}")
         # Summary Section
         summary = {
             "tests": total_tests,
@@ -84,7 +84,7 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             "suites": len(root.findall(".//test-suite")),  # Count the test suites
             "start": start_timestamp,
             "stop": stop_timestamp,
-            "duration": int(total_duration)
+            "duration": 100000000#int(total_duration)
         }
 
         # Final Output
