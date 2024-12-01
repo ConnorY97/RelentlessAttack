@@ -51,15 +51,19 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             "other": 0,
             "suites": len(root.findall(".//test-suite")),  # Count the number of test suites
             "start": start_timestamp,
-            "stop": end_timestamp
+            "stop": end_timestamp,
+            "duration": 0  # Initialize total duration
         }
 
         # Prepare tests section
         tests = []
+        total_duration = 0  # Initialize total duration accumulator
         for testcase in root.findall(".//test-case"):
             name = testcase.attrib.get('name')
             result = testcase.attrib.get('result', 'unknown').lower()
             duration = float(testcase.attrib.get('duration', 0)) * 1000  # convert to ms
+            total_duration += duration  # Add duration to total
+
             test_start_time = testcase.attrib.get('start-time')
             test_end_time = testcase.attrib.get('end-time')
 
@@ -92,17 +96,20 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             }
             tests.append(test_entry)
 
-        # Final JSON structure
-        final_output = {
-            "results": {
-                "tool": {
-                    "name": "RelentlessAttack",  # Modify based on your context
-                    "version": "0.1"  # Modify based on your context
-                },
-                "summary": summary,
-                "tests": tests
+            # Update total duration in the summary
+            summary["duration"] = total_duration  # Set total duration in ms
+
+            # Final JSON structure
+            final_output = {
+                "results": {
+                    "tool": {
+                        "name": "RelentlessAttack",  # Modify based on your context
+                        "version": "0.1"  # Modify based on your context
+                    },
+                    "summary": summary,
+                    "tests": tests
+                }
             }
-        }
 
         # Write the JSON to the specified output file
         with open(output_file_path, 'w') as json_file:
