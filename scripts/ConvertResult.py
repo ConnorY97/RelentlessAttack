@@ -17,7 +17,7 @@ def convert_xml_to_json(xml_file_path, output_file_path):
         skipped_tests = int(root.attrib.get('skipped', 0))
         start_time = root.attrib.get('start-time', "0001-01-01 00:00:00Z")
         end_time = root.attrib.get('end-time', "0001-01-01 00:00:00Z")
-        
+
         def to_unix_timestamp(dt_str):
             """Converts ISO 8601 datetime string to Unix timestamp in seconds."""
             try:
@@ -36,7 +36,9 @@ def convert_xml_to_json(xml_file_path, output_file_path):
             name = testcase.attrib.get("name", "Unnamed Test")
             status = testcase.attrib.get("result", "unknown").lower()
             duration = float(testcase.attrib.get("duration", 0)) * 1000  # Convert to ms
-            total_duration += duration
+            print(f"Test duration {int(duration)}")
+            total_duration += int(duration)
+            print(f"New total duration {int(total_duration)}")
             suite = testcase.attrib.get("classname", "Unknown Suite")
             start = to_unix_timestamp(testcase.attrib.get("start-time", start_time)) * 1000
             stop = to_unix_timestamp(testcase.attrib.get("end-time", end_time)) * 1000
